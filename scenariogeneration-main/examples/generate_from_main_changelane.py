@@ -13,11 +13,12 @@ import json
 import random
 import carla
 
+client = carla.Client('localhost', 2000)
+client.set_timeout(5.0)
+world = client.get_world()
+
 def get_random_spawn_points(offset, check_lane):
 
-    client = carla.Client('localhost', 2000)
-    client.set_timeout(5.0)
-    world = client.get_world()
     current_map = world.get_map()
 
     # spawn_transforms will be a list of carla.Transform
@@ -56,9 +57,20 @@ def get_random_spawn_points(offset, check_lane):
 
     targetstart = pyoscx.TeleportAction(pyoscx.WorldPosition(other_x, other_y, other_z, other_h))
 
-
     return egostart, targetstart 
 
+def get_random_vehicles():
+
+    blueprint_library = world.get_blueprint_library()
+
+    vehicle_bp = random.choice(blueprint_library.filter('vehicle.*.*'))
+    vehicle_name = vehicle_bp.id 
+
+    while (vehicle_name =='vehicle.bh.crossbike' or vehicle_name == 'vehicle.diamondback.century' or vehicle_name == 'vehicle.gazelle.omafiets'):
+        vehicle_bp = random.choice(blueprint_library.filter('vehicle.*.*'))
+        vehicle_name = vehicle_bp.id
+
+    return vehicle_name
 
 class Scenario(ScenarioGenerator):
     def __init__(self):
@@ -67,15 +79,11 @@ class Scenario(ScenarioGenerator):
 
     def scenario(self,**kwargs):
         
-     
-
         ### create catalogs
         catalog = pyoscx.Catalog()
 
-
         ### create road
-        road = pyoscx.RoadNetwork(roadfile='Town04',scenegraph=" ")
-
+        road = pyoscx.RoadNetwork(roadfile=kwargs['Town'],scenegraph=" ")
 
         ### create parameters
         paramdec = pyoscx.ParameterDeclarations()
@@ -85,19 +93,18 @@ class Scenario(ScenarioGenerator):
         prop= pyoscx.Properties()
         #prop.add_property
 
-
         ### create vehicles
 
         bb = pyoscx.BoundingBox(2,5,1.8,2.0,0,0.9)
         fa = pyoscx.Axle(0.523598775598,0.8,1.68,2.98,0.4)
         ba = pyoscx.Axle(0.523598775598,0.8,1.68,0,0.4)
-        ego_veh = pyoscx.Vehicle('vehicle.tesla.model3',pyoscx.VehicleCategory.car,bb,fa,ba,69,10,10)
+        ego_veh = pyoscx.Vehicle(get_random_vehicles(),pyoscx.VehicleCategory.car,bb,fa,ba,69,10,10)
         ego_veh.add_property(name='type',value='ego_vehicle')
         ego_veh.add_property(name='color',value='255,69,0')
         bb = pyoscx.BoundingBox(1.8,4.5,1.5,1.3,0,0.8)
         fa = pyoscx.Axle(0.523598775598,0.8,1.68,2.98,0.4)
         ba = pyoscx.Axle(0.523598775598,0.8,1.68,0,0.4)
-        other_veh = pyoscx.Vehicle('vehicle.tesla.model3',pyoscx.VehicleCategory.car,bb,fa,ba,69,10,10)
+        other_veh = pyoscx.Vehicle(get_random_vehicles(),pyoscx.VehicleCategory.car,bb,fa,ba,69,10,10)    
         other_veh.add_property(name='type',value='simulation')
 
         ## create entities
@@ -111,7 +118,6 @@ class Scenario(ScenarioGenerator):
 
         entities.add_scenario_object(targetname,other_veh)
 
-
         timeofday=pyoscx.TimeOfDay(True,2020,12,11,21,52,10)
         roadcond=pyoscx.RoadCondition(1.0)
         weather=pyoscx.Weather(pyoscx.CloudState.free,1,0,1,pyoscx.PrecipitationType.dry,0,100000)
@@ -119,11 +125,9 @@ class Scenario(ScenarioGenerator):
 
         # egostart = pyoscx.TeleportAction(pyoscx.WorldPosition(-9.4,-152.8,0.5,1.57079632679))
 
-
         # prop= pyoscx.Properties()
         # prop.add_property(name='module',value='external_control')
         # contr = pyoscx.Controller('HeroAgent',prop)
-
 
         ### create init
         init = pyoscx.Init()
@@ -141,9 +145,9 @@ class Scenario(ScenarioGenerator):
         # contr = pyoscx.Controller('HeroAgent',prop)
         # controllerAct = pyoscx.AssignControllerAction(contr)
 
-        #step_time = pyoscx.TransitionDynamics(pyoscx.DynamicsShapes.step,pyoscx.DynamicsDimension.time,1)
+        step_time = pyoscx.TransitionDynamics(pyoscx.DynamicsShapes.step,pyoscx.DynamicsDimension.time,1)
 
-        #targetspeed = pyoscx.AbsoluteSpeedAction(15,step_time)
+        targetspeed = pyoscx.AbsoluteSpeedAction(((kwargs['approachSpeed'])-8),step_time)
         targetstart = pyoscx.TeleportAction(pyoscx.WorldPosition(-8.6,-80,0.5,4.7))
         #targetstart = pyoscx.TeleportAction(pyoscx.WorldPosition(190,133,0.5,0))
 
@@ -158,15 +162,12 @@ class Scenario(ScenarioGenerator):
         init.add_init_action(egoname,egospeed)
         init.add_init_action(egoname,egostart)
         #init.add_init_action(egoname,controllerAct)
-        #init.add_init_action(targetname,targetspeed)
+        init.add_init_action(targetname,targetspeed)
         init.add_init_action(targetname,targetstart)
-
-
 
         ### create an event
 
         trigcond = pyoscx.RelativeDistanceCondition(40,pyoscx.Rule.lessThan, pyoscx.RelativeDistanceType.cartesianDistance,targetname,freespace=False)
-
 
         trigger = pyoscx.EntityTrigger('distancetrigger',0.0,pyoscx.ConditionEdge.none,trigcond,egoname)
 
@@ -175,7 +176,6 @@ class Scenario(ScenarioGenerator):
         sin_time = pyoscx.TransitionDynamics(pyoscx.DynamicsShapes.linear,pyoscx.DynamicsDimension.distance,25)
         action = pyoscx.RelativeLaneChangeAction(-1,targetname,sin_time)
         event.add_action('HeroChangesLane',action)
-
 
         ## create the maneuver 
         man = pyoscx.Maneuver('my_maneuver')
@@ -195,16 +195,13 @@ class Scenario(ScenarioGenerator):
         story = pyoscx.Story('mystory')
         story.add_act(act)
 
-
         ## create the storyboard
         
-
         sb = pyoscx.StoryBoard(init)
         sb.add_story(story)
 
         ## create the scenario
         sce = pyoscx.Scenario('change_lane','Bonora_Motta',paramdec,entities=entities,storyboard = sb,roadnetwork=road,catalog=catalog)
-
 
         return sce
 
@@ -212,9 +209,6 @@ if __name__ == "__main__":
     s = Scenario()
  
     parameters = {}
-    #parameters['approachSpeed2'] = [10, 20, 30]
-    #parameters['initialOffset2'] = [100, 150]
-    #parameters['randomPosition2'] = [True]
 
     # JSON file 
     f = open ('param_changelane.json', "r") 

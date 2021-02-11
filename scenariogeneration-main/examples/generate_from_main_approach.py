@@ -13,11 +13,12 @@ import json
 import random
 import carla
 
+client = carla.Client('localhost', 2000)
+client.set_timeout(5.0)
+world = client.get_world()
+
 def get_random_spawn_points(offset, check_lane):
 
-    client = carla.Client('localhost', 2000)
-    client.set_timeout(5.0)
-    world = client.get_world()
     current_map = world.get_map()
 
     # spawn_transforms will be a list of carla.Transform
@@ -58,6 +59,18 @@ def get_random_spawn_points(offset, check_lane):
 
     return egostart, targetstart 
 
+def get_random_vehicles():
+
+    blueprint_library = world.get_blueprint_library()
+
+    vehicle_bp = random.choice(blueprint_library.filter('vehicle.*.*'))
+    vehicle_name = vehicle_bp.id 
+
+    while (vehicle_name =='vehicle.bh.crossbike'):
+        vehicle_bp = random.choice(blueprint_library.filter('vehicle.*.*'))
+        vehicle_name = vehicle_bp.id
+
+    return vehicle_name
 
 class Scenario(ScenarioGenerator):
     def __init__(self):
