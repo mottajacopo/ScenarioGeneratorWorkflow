@@ -1,0 +1,30 @@
+{
+    "Parameters": [
+        {
+            "Town": [
+                "Town04"
+            ],
+            "approachSpeed": [
+                8,
+                8,
+                8,
+                8
+            ],
+            "initialOffset": [
+                50,
+                50,
+                50,
+                50
+            ],
+            "randomPosition": [
+                true
+            ],
+            "check_lane": [
+                true
+            ],
+            "traffic": [
+                "normal"
+            ]
+        }
+    ]
+}
