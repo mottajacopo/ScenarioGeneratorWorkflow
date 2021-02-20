@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <OpenSCENARIO xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="OpenSccenario.xsd">
-	<FileHeader author="Bonora_Motta" date="2021-02-15T11:13:26.002541" description="change_lane" revMajor="1" revMinor="0"/>
+	<FileHeader author="Bonora_Motta" date="2021-02-16T17:37:10.344911" description="change_lane" revMajor="1" revMinor="0"/>
 	<ParameterDeclarations/>
 	<CatalogLocations/>
 	<RoadNetwork>
@@ -64,49 +64,16 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="4.7" x="-8.6" y="80" z="0.5"/>
+								<WorldPosition h="4.7" x="-8.6" y="90" z="0.5"/>
 							</Position>
 						</TeleportAction>
-					</PrivateAction>
-					<PrivateAction>
-						<ControllerAction>
-							<AssignControllerAction>
-								<Controller name="HeroAgent">
-									<ParameterDeclarations/>
-									<Properties>
-										<Property name="module" value="external_control"/>
-									</Properties>
-								</Controller>
-							</AssignControllerAction>
-							<OverrideControllerValueAction>
-								<Throttle active="false" value="0"/>
-								<Brake active="false" value="0"/>
-								<Clutch active="false" value="0"/>
-								<ParkingBrake active="false" value="0"/>
-								<SteeringWheel active="false" value="0"/>
-								<Gear active="false" number="0"/>
-							</OverrideControllerValueAction>
-						</ControllerAction>
-					</PrivateAction>
-					<PrivateAction>
-						<ActivateControllerAction lateral="true" longitudinal="true"/>
 					</PrivateAction>
 				</Private>
 				<Private entityRef="adversary">
 					<PrivateAction>
-						<LongitudinalAction>
-							<SpeedAction>
-								<SpeedActionDynamics dynamicsDimension="time" dynamicsShape="step" value="1"/>
-								<SpeedActionTarget>
-									<AbsoluteTargetSpeed value="5"/>
-								</SpeedActionTarget>
-							</SpeedAction>
-						</LongitudinalAction>
-					</PrivateAction>
-					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="4.7" x="-8.6" y="-80" z="0.5"/>
+								<WorldPosition h="4.7" x="-8.6" y="30" z="0.5"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -116,11 +83,34 @@
 		<Story name="mystory">
 			<ParameterDeclarations/>
 			<Act name="my_act">
-				<ManeuverGroup maximumExecutionCount="1" name="mangroup">
+				<ManeuverGroup maximumExecutionCount="1" name="AutopilotSequenceHero">
 					<Actors selectTriggeringEntities="false">
 						<EntityRef entityRef="hero"/>
 					</Actors>
-					<Maneuver name="my_maneuver">
+					<Maneuver name="AutopilotSequenceHero">
+						<Event maximumExecutionCount="1" name="myfirstevent" priority="overwrite">
+							<Action name="newspeed">
+								<PrivateAction>
+									<LongitudinalAction>
+										<SpeedAction>
+											<SpeedActionDynamics dynamicsDimension="time" dynamicsShape="linear" value="5"/>
+											<SpeedActionTarget>
+												<AbsoluteTargetSpeed value="10"/>
+											</SpeedActionTarget>
+										</SpeedAction>
+									</LongitudinalAction>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StartCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="0"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
 						<Event maximumExecutionCount="1" name="HeroChangesLane" priority="overwrite">
 							<Action name="HeroChangesLane">
 								<PrivateAction>
@@ -136,7 +126,7 @@
 							</Action>
 							<StartTrigger>
 								<ConditionGroup>
-									<Condition conditionEdge="none" delay="0.0" name="distancetrigger">
+									<Condition conditionEdge="none" delay="1" name="distancetrigger">
 										<ByEntityCondition>
 											<TriggeringEntities triggeringEntitiesRule="any">
 												<EntityRef entityRef="hero"/>
@@ -145,6 +135,82 @@
 												<RelativeDistanceCondition entityRef="adversary" freespace="false" relativeDistanceType="cartesianDistance" rule="lessThan" value="40"/>
 											</EntityCondition>
 										</ByEntityCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+						<Event maximumExecutionCount="1" name="StartAutopilot" priority="overwrite">
+							<Action name="StartAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="true" longitudinal="true"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="none" delay="1" name="distancetrigger">
+										<ByEntityCondition>
+											<TriggeringEntities triggeringEntitiesRule="any">
+												<EntityRef entityRef="hero"/>
+											</TriggeringEntities>
+											<EntityCondition>
+												<RelativeDistanceCondition entityRef="adversary" freespace="false" relativeDistanceType="cartesianDistance" rule="lessThan" value="5"/>
+											</EntityCondition>
+										</ByEntityCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+						<Event maximumExecutionCount="1" name="StopAutopilot" priority="overwrite">
+							<Action name="StopAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="false"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StopCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="30"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+					</Maneuver>
+				</ManeuverGroup>
+				<ManeuverGroup maximumExecutionCount="1" name="AutopilotSequenceAdversary">
+					<Actors selectTriggeringEntities="false">
+						<EntityRef entityRef="adversary"/>
+					</Actors>
+					<Maneuver name="AutopilotSequenceAdversary">
+						<Event maximumExecutionCount="1" name="StartAutopilot" priority="overwrite">
+							<Action name="StartAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="true" longitudinal="true"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StartCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="0"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+						<Event maximumExecutionCount="1" name="StopAutopilot" priority="overwrite">
+							<Action name="StopAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="false"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StopCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="30"/>
+										</ByValueCondition>
 									</Condition>
 								</ConditionGroup>
 							</StartTrigger>
@@ -160,17 +226,22 @@
 						</Condition>
 					</ConditionGroup>
 				</StartTrigger>
-				<StopTrigger/>
+				<StopTrigger>
+					<ConditionGroup>
+						<Condition conditionEdge="rising" delay="0" name="EndCondition">
+							<ByEntityCondition>
+								<TriggeringEntities triggeringEntitiesRule="any">
+									<EntityRef entityRef="hero"/>
+								</TriggeringEntities>
+								<EntityCondition>
+									<TraveledDistanceCondition value="500.0"/>
+								</EntityCondition>
+							</ByEntityCondition>
+						</Condition>
+					</ConditionGroup>
+				</StopTrigger>
 			</Act>
 		</Story>
-		<StopTrigger>
-			<ConditionGroup>
-				<Condition conditionEdge="rising" delay="0" name="stop_simulation">
-					<ByValueCondition>
-						<SimulationTimeCondition rule="greaterThan" value="75"/>
-					</ByValueCondition>
-				</Condition>
-			</ConditionGroup>
-		</StopTrigger>
+		<StopTrigger/>
 	</Storyboard>
 </OpenSCENARIO>

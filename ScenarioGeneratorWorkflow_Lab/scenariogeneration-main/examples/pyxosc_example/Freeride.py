@@ -51,10 +51,10 @@ env=pyoscx.Environment("Environment1",timeofday,weather,roadcond)
 envAct= pyoscx.EnvironmentAction("Environment1", env)
 
 #controller
-prop= pyoscx.Properties()
-prop.add_property(name='ControllerCatalog',value='ExternalControl')
-contr = pyoscx.Controller('HeroAgent',prop)
-controllerAct = pyoscx.AssignControllerAction(contr)
+#prop= pyoscx.Properties()
+#prop.add_property(name='ControllerCatalog',value='ExternalControl')
+#contr = pyoscx.Controller('HeroAgent',prop)
+#controllerAct = pyoscx.AssignControllerAction(contr)
 
 egostart = pyoscx.TeleportAction(pyoscx.WorldPosition(-8.6,80,0.5,4.7))
 step_time = pyoscx.TransitionDynamics(pyoscx.DynamicsShapes.step,pyoscx.DynamicsDimension.time,1)
@@ -62,10 +62,9 @@ step_time = pyoscx.TransitionDynamics(pyoscx.DynamicsShapes.step,pyoscx.Dynamics
 egospeed = pyoscx.AbsoluteSpeedAction(15,step_time)
 
 init.add_global_action(envAct)
-
 init.add_init_action(egoname,egostart)
-init.add_init_action(egoname,egospeed)
-init.add_init_action(egoname,controllerAct)
+#init.add_init_action(egoname,egospeed)
+#init.add_init_action(egoname,controllerAct)
 
 ### create an event
 
@@ -79,16 +78,42 @@ event.add_trigger(starttrigger)
 action = pyoscx.ActivateControllerAction(True,True)
 event.add_action('StartEvent',action)
 
-## create the maneuver 
-man = pyoscx.Maneuver('my_maneuver')
-man.add_event(event)
+### create an event
 
-mangr = pyoscx.ManeuverGroup('mangroup')
-mangr.add_actor('hero')
-mangr.add_maneuver(man)
-starttrigger = pyoscx.ValueTrigger('starttrigger',50,pyoscx.ConditionEdge.rising,pyoscx.SimulationTimeCondition(0,pyoscx.Rule.greaterThan))
-act = pyoscx.Act('my_act',starttrigger)
-act.add_maneuver_group(mangr)
+#autopilot
+ap_starttrigger = pyoscx.ValueTrigger('StartCondition',1,pyoscx.ConditionEdge.rising,pyoscx.SimulationTimeCondition(0,pyoscx.Rule.greaterThan))
+ap_eventstart = pyoscx.Event('StartAutopilot',pyoscx.Priority.overwrite)
+ap_eventstart.add_trigger(ap_starttrigger)
+ap_actionstart = pyoscx.ActivateControllerAction(True,True)
+ap_eventstart.add_action('StartAutopilot',ap_actionstart)
+
+
+stoptrigcond = pyoscx.TraveledDistanceCondition(200.0)
+ap2_stoptrigger = pyoscx.EntityTrigger('EndCondition',1,pyoscx.ConditionEdge.rising,stoptrigcond,egoname)
+
+ap_stoptrigger = pyoscx.ValueTrigger('StopCondition',1,pyoscx.ConditionEdge.rising,pyoscx.SimulationTimeCondition(30,pyoscx.Rule.greaterThan))
+ap_eventstop = pyoscx.Event('StopAutopilot',pyoscx.Priority.overwrite)
+ap_eventstop.add_trigger(ap_stoptrigger)
+ap_actionstop = pyoscx.ActivateControllerAction(False,False)
+ap_eventstop.add_action('StopAutopilot',ap_actionstop)
+
+
+## create the maneuvers
+#maneuver for hero 
+h_man = pyoscx.Maneuver('AutopilotSequenceHero')
+h_man.add_event(ap_eventstart)
+h_man.add_event(ap_eventstop)
+
+h_mangr = pyoscx.ManeuverGroup('AutopilotSequenceHero')
+h_mangr.add_actor('hero')
+h_mangr.add_maneuver(h_man)
+
+act_starttrigger = pyoscx.ValueTrigger('starttrigger',0,pyoscx.ConditionEdge.rising,pyoscx.SimulationTimeCondition(0,pyoscx.Rule.greaterThan))
+stoptrigcond = pyoscx.TraveledDistanceCondition(200.0)
+act_stoptrigger = pyoscx.EntityTrigger('EndCondition',0,pyoscx.ConditionEdge.rising,stoptrigcond,egoname, triggeringpoint='stop')
+act = pyoscx.Act('my_act',act_starttrigger,act_stoptrigger)
+act.add_maneuver_group(h_mangr)
+
 
 # create the story
 #storyparam = pyoscx.ParameterDeclarations()
@@ -98,7 +123,7 @@ story.add_act(act)
 
 
 ## create the storyboard
-sb = pyoscx.StoryBoard(init,pyoscx.ValueTrigger('stop_simulation',0,pyoscx.ConditionEdge.rising,pyoscx.SimulationTimeCondition(75,pyoscx.Rule.greaterThan),'stop'))
+sb = pyoscx.StoryBoard(init)
 sb.add_story(story)
 
 ## create the scenario

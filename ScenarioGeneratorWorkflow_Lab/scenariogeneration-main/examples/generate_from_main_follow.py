@@ -12,65 +12,7 @@ from scenariogeneration import ScenarioGenerator
 import json
 import random
 import carla
-
-client = carla.Client('localhost', 2000)
-client.set_timeout(5.0)
-world = client.get_world()
-
-def get_random_spawn_points(offset, check_lane):
-
-    current_map = world.get_map()
-
-    # spawn_transforms will be a list of carla.Transform
-    spawn_transforms = current_map.get_spawn_points()
-
-    # get a single random spawn transformation over the map
-    random_spawn = random.choice(spawn_transforms)
-
-    waypoint = current_map.get_waypoint(random_spawn.location)
-
-    if(check_lane):
-        while (not(waypoint.lane_change == carla.libcarla.LaneChange.Both or waypoint.lane_change == carla.libcarla.LaneChange.Left)):
-            random_spawn = random.choice(spawn_transforms)
-            waypoint = current_map.get_waypoint(random_spawn.location)      
-
-    traveled_distance = 0
-    distance = offset
-    while traveled_distance < distance: 
-        waypoint_new = waypoint.next(1.0)[-1]
-        traveled_distance += waypoint_new.transform.location.distance(waypoint.transform.location)
-        waypoint = waypoint_new
-
-
-    ego_x = random_spawn.location.x
-    ego_y = random_spawn.location.y *(-1)
-    ego_z = random_spawn.location.z
-    ego_h = math.radians(random_spawn.rotation.yaw) *(-1)
-
-    egostart = pyoscx.TeleportAction(pyoscx.WorldPosition(ego_x, ego_y, ego_z, ego_h))
-
-    other_x = waypoint.transform.location.x
-    other_y = waypoint.transform.location.y *(-1)
-    other_z = waypoint.transform.location.z
-    other_h = math.radians(waypoint.transform.rotation.yaw) *(-1)
-
-    targetstart = pyoscx.TeleportAction(pyoscx.WorldPosition(other_x, other_y, other_z, other_h))
-
-
-    return egostart, targetstart 
-
-def get_random_vehicles():
-
-    blueprint_library = world.get_blueprint_library()
-
-    vehicle_bp = random.choice(blueprint_library.filter('vehicle.*.*'))
-    vehicle_name = vehicle_bp.id 
-
-    while (vehicle_name =='vehicle.bh.crossbike'):
-        vehicle_bp = random.choice(blueprint_library.filter('vehicle.*.*'))
-        vehicle_name = vehicle_bp.id
-
-    return vehicle_name
+import util
 
 class Scenario(ScenarioGenerator):
     def __init__(self):
@@ -83,16 +25,12 @@ class Scenario(ScenarioGenerator):
         catalog = pyoscx.Catalog()
 
         ### create road
-        road = pyoscx.RoadNetwork(roadfile='Town04',scenegraph=" ")
+        road = pyoscx.RoadNetwork(roadfile=kwargs['Town'],scenegraph=" ")
 
         ### create parameters
         paramdec = pyoscx.ParameterDeclarations()
-
         paramdec.add_parameter(pyoscx.Parameter('leadingSpeed',pyoscx.ParameterType.double,'4.0'))
         ###create properties
-
-        prop= pyoscx.Properties()
-        #prop.add_property
 
         ### create vehicles
 
@@ -105,33 +43,25 @@ class Scenario(ScenarioGenerator):
         bb = pyoscx.BoundingBox(1.8,4.5,1.5,1.3,0,0.8)
         fa = pyoscx.Axle(0.523598775598,0.8,1.68,2.98,0.4)
         ba = pyoscx.Axle(0.523598775598,0.8,1.68,0,0.4)
-        other_veh = pyoscx.Vehicle('vehicle.tesla.model3',pyoscx.VehicleCategory.car,bb,fa,ba,69,10,10)
+        other_veh = pyoscx.Vehicle(util.get_random_vehicles(),pyoscx.VehicleCategory.car,bb,fa,ba,69,10,10)
         other_veh.add_property(name='type',value='simulation')
 
         ## create entities
 
         egoname = 'hero'
         targetname = 'adversary'
+        npcname = 'npc'
 
         entities = pyoscx.Entities()
 
         entities.add_scenario_object(egoname,ego_veh)
-
         entities.add_scenario_object(targetname,other_veh)
 
-        timeofday=pyoscx.TimeOfDay(True,2020,12,11,21,52,10)
-        roadcond=pyoscx.RoadCondition(1.0)
-        weather=pyoscx.Weather(pyoscx.CloudState.free,1,0,1,pyoscx.PrecipitationType.dry,0,100000)
-        env=pyoscx.Environment("Environment1", timeofday,weather,roadcond)
+        for i in range(kwargs['npc_number']):
+            npc_veh = pyoscx.Vehicle(util.get_random_vehicles(),pyoscx.VehicleCategory.car,bb,fa,ba,69,10,10)    
+            npc_veh.add_property(name='type',value='ego_vehicle')
+            entities.add_scenario_object((npcname + str(i)),npc_veh)        
 
-        # egostart = pyoscx.TeleportAction(pyoscx.WorldPosition(-9.4,-152.8,0.5,1.57079632679))
-
-        # prop= pyoscx.Properties()
-        # prop.add_property(name='module',value='external_control')
-        # contr = pyoscx.Controller('HeroAgent',prop)
-
-        ### create init
-        init = pyoscx.Init()
 
         #environment
         timeofday=pyoscx.TimeOfDay(True,2020,12,11,11,52,10)
@@ -140,60 +70,91 @@ class Scenario(ScenarioGenerator):
         env=pyoscx.Environment("Environment1",timeofday,weather,roadcond)
         envAct= pyoscx.EnvironmentAction("Environment1", env)
 
-        #controller
-        prop= pyoscx.Properties()
-        prop.add_property(name='module',value='external_control')
-        contr = pyoscx.Controller('HeroAgent',prop)
-        controllerAct = pyoscx.AssignControllerAction(contr)
 
-        #step_time = pyoscx.TransitionDynamics(pyoscx.DynamicsShapes.step,pyoscx.DynamicsDimension.time,1)
-
-        #targetspeed = pyoscx.AbsoluteSpeedAction(15,step_time)
         targetstart = pyoscx.TeleportAction(pyoscx.WorldPosition(-8.6,30,0.5,4.7))
-        #targetstart = pyoscx.TeleportAction(pyoscx.WorldPosition(190,133,0.5,0))
+        #step_time = pyoscx.TransitionDynamics(pyoscx.DynamicsShapes.step,pyoscx.DynamicsDimension.time,1)
+        #targetspeed = pyoscx.AbsoluteSpeedAction(15,step_time)
 
-        #egostart = pyoscx.TeleportAction(pyoscx.WorldPosition(-9.4,-152.8,0.5,1.57079632679))
         egostart = pyoscx.TeleportAction(pyoscx.WorldPosition(-8.6,80,0.5,4.7))
         #egospeed = pyoscx.AbsoluteSpeedAction(15,pyoscx.TransitionDynamics(pyoscx.DynamicsShapes.step,pyoscx.DynamicsDimension.distance,10))
 
         if(kwargs['randomPosition']):
-            egostart, targetstart = get_random_spawn_points(kwargs['initialOffset'],kwargs['check_lane'])
+            egostart, targetstart, npc_spawns = util.get_random_spawn_points(kwargs['initialOffset'],kwargs['check_lane'])
+
+        ### create init
+        init = pyoscx.Init()
 
         init.add_global_action(envAct)
-        #init.add_init_action(egoname,egospeed)
+
         init.add_init_action(egoname,egostart)
-        #init.add_init_action(egoname,controllerAct)
-        #init.add_init_action(targetname,targetspeed)
         init.add_init_action(targetname,targetstart)
 
-        ### create an event
+        #init npcs start positions
+        npcstart_list = []
+        for i in range(kwargs['npc_number']):
+            spawn = random.choice(npc_spawns)
+            while([spawn.position.x, spawn.position.y] in npcstart_list):
+                spawn = random.choice(npc_spawns)
+            
+            npcstart_list.append([spawn.position.x, spawn.position.y])
+            init.add_init_action((npcname + str(i)),spawn)
 
-        trigcond = pyoscx.RelativeDistanceCondition(40,pyoscx.Rule.lessThan, pyoscx.RelativeDistanceType.cartesianDistance,targetname,freespace=False)
+        #Create events
+        #autopilot
+        ap_starttrigger = pyoscx.ValueTrigger('StartCondition',1,pyoscx.ConditionEdge.rising,pyoscx.SimulationTimeCondition(0,pyoscx.Rule.greaterThan))
+        ap_eventstart = pyoscx.Event('StartAutopilot',pyoscx.Priority.overwrite)
+        ap_eventstart.add_trigger(ap_starttrigger)
+        ap_actionstart = pyoscx.ActivateControllerAction(False,True)
+        ap_eventstart.add_action('StartAutopilot',ap_actionstart)
 
-        trigger = pyoscx.EntityTrigger('distancetrigger',0.0,pyoscx.ConditionEdge.none,trigcond,egoname)
+        ap_stoptrigger = pyoscx.ValueTrigger('StopCondition',1,pyoscx.ConditionEdge.rising,pyoscx.SimulationTimeCondition(30,pyoscx.Rule.greaterThan))
+        ap_eventstop = pyoscx.Event('StopAutopilot',pyoscx.Priority.overwrite)
+        ap_eventstop.add_trigger(ap_stoptrigger)
+        ap_actionstop = pyoscx.ActivateControllerAction(False,False)
+        ap_eventstop.add_action('StopAutopilot',ap_actionstop)
 
-        event = pyoscx.Event('LeadingVehicleKeepsVelocity',pyoscx.Priority.overwrite)
-        event.add_trigger(trigger)
-        step = pyoscx.TransitionDynamics(pyoscx.DynamicsShapes.step,pyoscx.DynamicsDimension.distance,150)
-        action1 = pyoscx.AbsoluteSpeedAction('$leadingSpeed',step)
-        #actionController = pyoscx.ActivateControllerAction(True, True)
-        event.add_action('LeadingVehicleKeepsVelocity',action1)
 
-        ## create the maneuver 
-        man = pyoscx.Maneuver('my_maneuver')
-        man.add_event(event)
+        ## create the maneuvers
+        #maneuver for hero 
+        h_man = pyoscx.Maneuver('AutopilotSequenceHero')
+        h_man.add_event(ap_eventstart)
+        h_man.add_event(ap_eventstop)
 
-        mangr = pyoscx.ManeuverGroup('mangroup')
-        mangr.add_actor('adversary')
-        mangr.add_maneuver(man)
-        starttrigger = pyoscx.ValueTrigger('starttrigger',0,pyoscx.ConditionEdge.rising,pyoscx.SimulationTimeCondition(0,pyoscx.Rule.greaterThan))
-        stoptrigger = pyoscx.ValueTrigger('stop_simulation',0,pyoscx.ConditionEdge.rising,pyoscx.SimulationTimeCondition(20,pyoscx.Rule.greaterThan),'stop')
-        act = pyoscx.Act('my_act',starttrigger,stoptrigger)
-        act.add_maneuver_group(mangr)
+        h_mangr = pyoscx.ManeuverGroup('AutopilotSequenceHero')
+        h_mangr.add_actor('hero')
+        h_mangr.add_maneuver(h_man)
+
+        #maneuver for adversary
+        a_man = pyoscx.Maneuver('AutopilotSequenceAdversary')
+        a_man.add_event(ap_eventstart)
+        a_man.add_event(ap_eventstop)
+
+        a_mangr = pyoscx.ManeuverGroup('AutopilotSequenceAdversary')
+        a_mangr.add_actor('adversary')
+        a_mangr.add_maneuver(a_man)
+
+
+        act_starttrigger = pyoscx.ValueTrigger('starttrigger',0,pyoscx.ConditionEdge.rising,pyoscx.SimulationTimeCondition(0,pyoscx.Rule.greaterThan))
+        stoptrigcond = pyoscx.TraveledDistanceCondition(200.0)
+        act_stoptrigger = pyoscx.EntityTrigger('EndCondition',0,pyoscx.ConditionEdge.rising,stoptrigcond,egoname, triggeringpoint='stop')
+        act = pyoscx.Act('my_act',act_starttrigger,act_stoptrigger)
+
+        act.add_maneuver_group(h_mangr)
+
+        act.add_maneuver_group(a_mangr)
+
+        #maneuver for npcs 
+        for i in range(kwargs['npc_number']):
+            npc_man = pyoscx.Maneuver('AutopilotSequenceNPC'+str(i))
+            npc_man.add_event(ap_eventstart)
+            npc_man.add_event(ap_eventstop)
+            npc_mangr = pyoscx.ManeuverGroup('AutopilotSequenceNPC'+str(i))
+            npc_mangr.add_actor('npc'+str(i))
+            npc_mangr.add_maneuver(npc_man)
+
+            act.add_maneuver_group(npc_mangr)
 
         # create the story
-        #storyparam = pyoscx.ParameterDeclarations()
-        #storyparam.add_parameter(pyoscx.Parameter('adversary',pyoscx.ParameterType.string,targetname))
         story = pyoscx.Story('mystory')
         story.add_act(act)
 
@@ -210,9 +171,6 @@ if __name__ == "__main__":
     s = Scenario()
  
     parameters = {}
-    #parameters['approachSpeed2'] = [10, 20, 30]
-    #parameters['initialOffset2'] = [100, 150]
-    #parameters['randomPosition2'] = [True]
 
     # JSON file 
     f = open ('param_follow.json', "r") 
@@ -223,6 +181,9 @@ if __name__ == "__main__":
     for jsonParam in data['Parameters']: 
         for value in jsonParam:
             parameters[value] = jsonParam[value]
+
+    #convert repetirions to list of numbers for correct nember of permutations
+    parameters['repetitions'] = list(range(0, parameters["repetitions"][0]))
 
     s.print_permutations(parameters)
 

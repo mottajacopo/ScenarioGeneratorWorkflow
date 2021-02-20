@@ -1,1 +1,29 @@
-{"Parameters": [{"approachSpeed": [10, 15, 20], "initialOffset": [80, 100], "randomPosition": [true], "check_lane": [false]}]}
+{
+    "Parameters": [
+        {
+            "Town": [
+                "Town03"
+            ],
+            "approachSpeed": [
+                10,
+                15,
+                20
+            ],
+            "randomPosition": [
+                true
+            ],
+            "initialOffset": [
+                30,
+                50,
+                80
+            ],
+            "repetitions": [
+                4
+            ],
+            "npc_number": [
+                30
+            ],
+            "check_lane": ["central"]
+        }
+    ]
+}

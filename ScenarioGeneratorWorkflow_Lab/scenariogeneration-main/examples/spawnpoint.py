@@ -53,12 +53,19 @@ for i in range(2):
 
 # get a single random spawn transformation over the map
 
-#random_spawn.location.x = -8.5
-#random_spawn.location.y = 80
-#random_spawn.location.z = 0.5
-#random_spawn.rotation.yaw = 90
+random_spawn.location.x = -8.5
+random_spawn.location.y = 80
+random_spawn.location.z = 0.5
+random_spawn.rotation.yaw = 90
 
 waypoint = current_map.get_waypoint(random_spawn.location)
+
+random_spawn.location.x = -5
+random_spawn.location.y = 80
+random_spawn.location.z = 0.5
+random_spawn.rotation.yaw = 90
+
+waypoint2 = current_map.get_waypoint(random_spawn.location)
 
 traveled_distance = 0
 distance = 10

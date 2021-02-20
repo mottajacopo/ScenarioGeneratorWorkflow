@@ -7,18 +7,13 @@
             "randomPosition": [
                 true
             ],
-            "initialOffset": [
-                30,
-                50,
-                80
-            ],
             "repetitions": [
                 20
             ],
             "npc_number": [
                 30
             ],
-            "check_lane": ["central"]
+            "check_lane": ["left"]
         }
     ]
 }
