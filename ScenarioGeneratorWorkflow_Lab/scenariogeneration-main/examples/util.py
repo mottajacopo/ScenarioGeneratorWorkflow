@@ -4,14 +4,19 @@ import carla
 import pyoscx
 import math
 
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy import ndimage
+
 #connect to carla server and get informations of the world
 client = carla.Client('localhost', 2000)
 client.set_timeout(5.0)
 world = client.get_world()
-current_map = world.get_map()
+
 
 def get_random_spawn_points(offset, check_lane):   #get spawn points for ego, adversary and npcs
 
+    current_map = world.get_map()
     # spawn_transforms will be a list of carla.Transform
     spawn_transforms = current_map.get_spawn_points()
 
@@ -20,6 +25,10 @@ def get_random_spawn_points(offset, check_lane):   #get spawn points for ego, ad
 
     #convert transform to waypoint
     waypoint = current_map.get_waypoint(random_spawn.location)
+
+    npc_spawns = []
+
+    #check_intersection = waypoint.is_intersection or waypoint.is_junction
 
     #if scenario requested do a lane check to see if left lane is free
     if(check_lane == "left"):
@@ -33,16 +42,47 @@ def get_random_spawn_points(offset, check_lane):   #get spawn points for ego, ad
     elif(check_lane == "both"):
         while (not(waypoint.lane_change == carla.libcarla.LaneChange.Both)):
             random_spawn = random.choice(spawn_transforms)
-            waypoint = current_map.get_waypoint(random_spawn.location)            
-                  
+            waypoint = current_map.get_waypoint(random_spawn.location)  
+
+
+
+    ego_spawn = random_spawn
+    ego_waypoint = current_map.get_waypoint(ego_spawn.location)            
+                    
     #compute adversary spawn point 
-    random_spawn_offset = get_offset_waypoint(waypoint, offset)
+    target_spawn_offset = get_offset_waypoint(ego_waypoint, offset)
 
     #convert carla location to pyxosc location
-    egostart = carla2pyxosc(random_spawn)
-    targetstart = carla2pyxosc(random_spawn_offset.transform)
+    egostart = carla2pyxosc(ego_spawn)
+    targetstart = carla2pyxosc(target_spawn_offset.transform)
 
-    npc_spawns = get_random_npc_spawn(random_spawn,200,check_lane)
+    npc_spawns = get_random_npc_spawn(current_map, random_spawn,100, offset, check_lane)
+
+    """
+    im = plt.imread("Town03.jpg")
+    im2 = ndimage.rotate(im, 0)
+    plt.imshow(im2, extent=[260, -160, 220, -220])
+
+    circle1 = plt.Circle((random_spawn.location.x, (-1)*random_spawn.location.y), 100, color='g', alpha=0.2)
+    plt.gca().add_patch(circle1)
+    circle2 = plt.Circle((random_spawn.location.x, (-1)*random_spawn.location.y), 5, color='c', alpha=0.2)
+    plt.gca().add_patch(circle2)
+
+    for i in spawn_transforms:
+        plt.scatter(i.location.x,(-1)*i.location.y,s = 5, c='r')
+
+
+    for i in npc_spawns:
+        plt.scatter(i.position.x,i.position.y,s = 5, c='m')
+
+    plt.scatter(egostart.position.x, egostart.position.y ,s = 5, c='b')
+
+    plt.show(block=False)
+    plt.pause(1)
+    plt.savefig('testplot' + str(random_spawn) +'.jpg')
+    plt.close()
+    """
+    
 
     return egostart, targetstart, npc_spawns 
 
@@ -57,7 +97,8 @@ def get_random_vehicles():   #get random vehicle name
                         'vehicle.gazelle.omafiets',
                         'vehicle.diamondback.century',
                         'vehicle.tesla.cybertruck',
-                        'vehicle.bmw.isetta']
+                        'vehicle.bmw.isetta',
+                        'vehicle.tesla.model3']
 
     vehicle_bp = random.choice(blueprint_library.filter('vehicle.*.*'))
     vehicle_name = vehicle_bp.id
@@ -88,16 +129,20 @@ def carla2pyxosc(spawn):   #convert carla location to pyxosc
 
     return pyoscx.TeleportAction(pyoscx.WorldPosition(x, y, z, h))
 
-def get_random_npc_spawn(ego_spawn,radius,check_lane):
+
+def get_random_npc_spawn(current_map, ego_spawn,radius, offset, check_lane):
+
     npc_spawns = []
 
     radius1 = radius
-    radius2 = 5
+    radius3 = offset
+
     c_x = ego_spawn.location.x
     c_y = ego_spawn.location.y
 
     ego_waypoint = current_map.get_waypoint(ego_spawn.location)
     ego_lane_id = ego_waypoint.lane_id
+
     if (check_lane == "left"):
         lane_offset = -1
     elif(check_lane == "right"):
@@ -107,14 +152,15 @@ def get_random_npc_spawn(ego_spawn,radius,check_lane):
     else:
         lane_offset = 999
 
-    for i in range(3):
-        spawn_transforms = current_map.get_spawn_points()
-        for spawn in spawn_transforms:
-            random_waypoint = current_map.get_waypoint(spawn.location)
-            random_lane_id = random_waypoint.lane_id
+    spawn_transforms = current_map.get_spawn_points()
+    for spawn in spawn_transforms:
+        random_waypoint = current_map.get_waypoint(spawn.location)
+        random_lane_id = random_waypoint.lane_id
+        if(spawn != ego_spawn):
             if (c_x-spawn.location.x)**2 + (c_y-spawn.location.y)**2 <= radius1**2:
-                if (c_x-spawn.location.x)**2 + (c_y-spawn.location.y)**2 >= radius2**2:
-                    if (random_lane_id != (ego_lane_id + lane_offset)):
-                        npc_spawns.append(carla2pyxosc(spawn))
+                if (random_lane_id != (ego_lane_id + lane_offset) and (random_lane_id != ego_lane_id)):
+                    npc_spawns.append(carla2pyxosc(spawn))
+                elif(c_x-spawn.location.x)**2 + (c_y-spawn.location.y)**2 >= radius3**2:
+                    npc_spawns.append(carla2pyxosc(spawn))
     
     return npc_spawns

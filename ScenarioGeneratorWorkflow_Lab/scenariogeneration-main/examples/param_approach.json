@@ -2,26 +2,26 @@
     "Parameters": [
         {
             "Town": [
-                "Town03"
+                "Town04"
             ],
             "approachSpeed": [
+                5,
                 10,
-                15,
-                20
+                15
             ],
             "randomPosition": [
                 true
             ],
             "initialOffset": [
-                30,
                 50,
                 80
+                
             ],
             "repetitions": [
                 4
             ],
             "npc_number": [
-                30
+                20
             ],
             "check_lane": ["central"]
         }

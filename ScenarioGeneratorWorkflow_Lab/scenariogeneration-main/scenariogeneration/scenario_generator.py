@@ -131,8 +131,8 @@ class ScenarioGenerator():
             road = self.road(**p)
             
             if road:
-                #self.road_file = os.path.abspath(os.path.join(generation_folder,'xodr',scenario_name+'.xodr'))
-                #road.write_xml(self.road_file)
+                self.road_file = os.path.abspath(os.path.join(generation_folder,'xodr',scenario_name+'.xodr'))
+                road.write_xml(self.road_file)
 
             sce = self.scenario(**p)
 

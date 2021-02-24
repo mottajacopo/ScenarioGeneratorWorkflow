@@ -1,3 +1,3 @@
 import os 
-for i in range(16):
+for i in range(50):
     os.system("python manual_control.py")

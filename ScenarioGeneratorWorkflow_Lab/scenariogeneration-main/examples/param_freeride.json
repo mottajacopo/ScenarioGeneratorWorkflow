@@ -11,9 +11,9 @@
                 20
             ],
             "npc_number": [
-                30
+                20
             ],
-            "check_lane": ["left"]
+            "check_lane": ["central"]
         }
     ]
 }

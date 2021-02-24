@@ -8,15 +8,15 @@
                 true
             ],
             "initialOffset": [
-                30,
-                50,
-                80
+                10,
+                20,
+                30
             ],
             "repetitions": [
-                20
+                10
             ],
             "npc_number": [
-                30
+                20
             ],
             "check_lane": ["central"]
         }
