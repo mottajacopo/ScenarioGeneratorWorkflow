@@ -16,6 +16,7 @@ client = carla.Client('localhost', 2000)
 client.set_timeout(5.0)
 world = client.get_world()
 current_map = world.get_map()
+i = current_map.name
 
 def carla2pyxosc(spawn):   #convert carla location to pyxosc
 
@@ -40,14 +41,13 @@ def get_random_npc_spawn(current_map, ego_spawn,radius,check_lane):
     ego_waypoint = current_map.get_waypoint(ego_spawn.location)
     ego_lane_id = ego_waypoint.lane_id
 
+    
     if (check_lane == "left"):
-        lane_offset = -1
+        lane_change_id = ego_waypoint.get_left_lane().lane_id
     elif(check_lane == "right"):
-        lane_offset = 1
-    elif(check_lane == "central"):
-        lane_offset = 0
+        lane_change_id = ego_waypoint.get_right_lane().lane_id
     else:
-        lane_offset = 999
+        lane_change_id = 999
 
     npc_lane = []
     npc_lane_id = []
@@ -58,9 +58,10 @@ def get_random_npc_spawn(current_map, ego_spawn,radius,check_lane):
         random_lane_id = random_waypoint.lane_id
         if(spawn != ego_spawn):
             if (c_x-spawn.location.x)**2 + (c_y-spawn.location.y)**2 <= radius1**2:
-                if (random_lane_id != (ego_lane_id + lane_offset) ):
+                if ((random_lane_id != lane_change_id) and (random_lane_id != ego_lane_id)):
                     npc_spawns.append(carla2pyxosc(spawn))
-                elif(c_x-spawn.location.x)**2 + (c_y-spawn.location.y)**2 >= radius3**2:
+                    #npc_lane.append(carla2pyxosc(spawn))
+                elif(c_x-spawn.location.x)**2 + (c_y-spawn.location.y)**2 >= (radius3 + 10)**2:
                     npc_lane.append(carla2pyxosc(spawn))
                     npc_spawns.append(carla2pyxosc(spawn))
 
@@ -100,7 +101,14 @@ def get_random_spawn_points(offset, check_lane):   #get spawn points for ego, ad
                 random_spawn = random.choice(spawn_transforms)
                 waypoint = current_map.get_waypoint(random_spawn.location)   
    
-                    
+
+    #random_spawn.location.x = 385.45
+    #random_spawn.location.y = -166.17
+    #random_spawn.location.z = 0.5
+    #random_spawn.rotation.yaw = -90
+
+    waypoint = current_map.get_waypoint(random_spawn.location)
+
     #compute adversary spawn point 
     random_spawn_offset = get_offset_waypoint(waypoint, offset)
 
@@ -108,12 +116,23 @@ def get_random_spawn_points(offset, check_lane):   #get spawn points for ego, ad
     egostart = carla2pyxosc(random_spawn)
     targetstart = carla2pyxosc(random_spawn_offset.transform)
 
+
+
     npc_spawns, npc_lane = get_random_npc_spawn(current_map, random_spawn,100,check_lane)
 
     
-    im = plt.imread("Town03.jpg")
+    im = plt.imread(str(current_map.name) + ".jpg")
     im2 = ndimage.rotate(im, 0)
-    plt.imshow(im2, extent=[260, -160, 220, -220])
+    im2 = np.flipud(im)
+
+
+    #plt.imshow(im2, extent=[-10, 403, 10, -338])  #Town01
+    #plt.imshow(im2, extent=[-14, 200, -100, -314])  #Town02
+    #plt.imshow(im2, extent=[260, -160, 220, -220])  #Town03
+    #plt.imshow(im2, extent=[420, -522, 403, -450])  #Town04
+    #plt.imshow(im2, extent=[-282, 220, 220, -219])  #Town05
+    plt.imshow(im2, extent=[-378, 675, 160, -410])  #Town06
+
 
     circle1 = plt.Circle((random_spawn.location.x, (-1)*random_spawn.location.y), 100, color='g', alpha=0.2)
     plt.gca().add_patch(circle1)
@@ -121,20 +140,20 @@ def get_random_spawn_points(offset, check_lane):   #get spawn points for ego, ad
     plt.gca().add_patch(circle2)
 
     for i in spawn_transforms:
-        plt.scatter(i.location.x,(-1)*i.location.y,s = 5, c='r')
-
+        plt.scatter(i.location.x,(-1)*i.location.y,s = 3, c='r')
 
     for i in npc_spawns:
-        plt.scatter(i.position.x,i.position.y,s = 5, c='m')
+        plt.scatter(i.position.x,i.position.y,s = 3, c='m')
 
     for i in npc_lane:
-        plt.scatter(i.position.x,i.position.y,s = 5, c='g')
+        plt.scatter(i.position.x,i.position.y,s = 3, c='g')
 
-    plt.scatter(egostart.position.x, egostart.position.y ,s = 4, c='b')
+    plt.scatter(egostart.position.x, egostart.position.y ,s = 5, c='b')
+    #plt.scatter(targetstart.position.x, targetstart.position.y ,s = 5, c='c')
 
     plt.show()
     #plt.pause(1)
-    plt.savefig('testplot' + str(random_spawn) +'.jpg')
+    plt.savefig('testplot' + str(random_spawn) +'.jpg', dpi=300)
     #plt.close()
     
     
@@ -153,5 +172,5 @@ def get_offset_waypoint(waypoint_ego, offset):   #computer offset waypoint
 
 
 
-egostart, targetstart, npc_spawns = get_random_spawn_points( 0,'central')
+egostart, targetstart, npc_spawns = get_random_spawn_points( 0,'left')
 

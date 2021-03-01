@@ -126,7 +126,7 @@ class Scenario(ScenarioGenerator):
         act_starttrigger = pyoscx.ValueTrigger('starttrigger',0,pyoscx.ConditionEdge.rising,pyoscx.SimulationTimeCondition(0,pyoscx.Rule.greaterThan))
         #stoptrigcond = pyoscx.TraveledDistanceCondition(200.0)
         #act_stoptrigger = pyoscx.EntityTrigger('EndCondition',0,pyoscx.ConditionEdge.rising,stoptrigcond,egoname, triggeringpoint='stop')
-        act_stoptrigger = pyoscx.ValueTrigger('StopCondition',0,pyoscx.ConditionEdge.rising,pyoscx.SimulationTimeCondition(10,pyoscx.Rule.greaterThan), triggeringpoint='stop')
+        act_stoptrigger = pyoscx.ValueTrigger('StopCondition',0,pyoscx.ConditionEdge.rising,pyoscx.SimulationTimeCondition(60,pyoscx.Rule.greaterThan), triggeringpoint='stop')
         act = pyoscx.Act('my_act',act_starttrigger,act_stoptrigger)
 
         act.add_maneuver_group(h_mangr)

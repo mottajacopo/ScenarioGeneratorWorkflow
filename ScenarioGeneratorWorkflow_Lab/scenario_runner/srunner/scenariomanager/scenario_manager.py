@@ -22,6 +22,8 @@ from srunner.scenariomanager.result_writer import ResultOutputProvider
 from srunner.scenariomanager.timer import GameTime
 from srunner.scenariomanager.watchdog import Watchdog
 
+import carla
+
 
 class ScenarioManager(object):
 
@@ -131,6 +133,19 @@ class ScenarioManager(object):
                     timestamp = snapshot.timestamp
             if timestamp:
                 self._tick_scenario(timestamp)
+
+#####################################################################################################
+
+            for vehicle in self.ego_vehicles:
+                if vehicle.is_at_traffic_light():
+                    traffic_light = vehicle.get_traffic_light()
+
+                    if traffic_light.get_state() == carla.TrafficLightState.Red or traffic_light.get_state() == carla.TrafficLightState.Yellow:
+                        #world.hud.notification("Traffic light changed! Good to go!")
+                        traffic_light.set_state(carla.TrafficLightState.Green)
+                        print("changed traffic ligth to green")
+
+#####################################################################################################
 
         self._watchdog.stop()
 

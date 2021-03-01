@@ -53,7 +53,7 @@ class Scenario(ScenarioGenerator):
         fa = pyoscx.Axle(0.523598775598,0.8,1.68,2.98,0.4)
         ba = pyoscx.Axle(0.523598775598,0.8,1.68,0,0.4)
         other_veh = pyoscx.Vehicle(util.get_random_vehicles(),pyoscx.VehicleCategory.car,bb,fa,ba,69,10,10)
-        other_veh.add_property(name='type',value='simulation')
+        other_veh.add_property(name='type',value='ego_vehicle')
 
         ## create entities
 
@@ -73,7 +73,7 @@ class Scenario(ScenarioGenerator):
 
         for i in range(npc_number):
             npc_veh = pyoscx.Vehicle(util.get_random_vehicles(),pyoscx.VehicleCategory.car,bb,fa,ba,69,10,10)    
-            npc_veh.add_property(name='type',value='ego_vehicle')
+            npc_veh.add_property(name='type',value='other_vehicle')
             entities.add_scenario_object((npcname + str(i)),npc_veh)        
 
 
