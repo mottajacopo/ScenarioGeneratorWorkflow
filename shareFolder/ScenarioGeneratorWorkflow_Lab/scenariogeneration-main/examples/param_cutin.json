@@ -2,7 +2,7 @@
     "Parameters": [
         {
             "Town": [
-                "Town03"
+                "Town04"
             ],
             "approachSpeed": [
                 8
@@ -16,12 +16,12 @@
                 80
             ],
             "repetitions": [
-                4
+                10
             ],
             "npc_number": [
-                30
+                20
             ],
-            "check_lane": ["central"]
+            "check_lane": ["right"]
         }
     ]
 }

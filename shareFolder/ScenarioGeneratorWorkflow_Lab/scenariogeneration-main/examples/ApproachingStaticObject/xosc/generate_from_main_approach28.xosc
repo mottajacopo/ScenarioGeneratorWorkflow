@@ -1,12 +1,12 @@
 <?xml version="1.0" ?>
 <OpenSCENARIO xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="OpenSccenario.xsd">
-	<FileHeader author="Bonora_Motta" date="2021-02-28T09:50:34.714725" description="approaching_static_object" revMajor="1" revMinor="0"/>
+	<FileHeader author="Bonora_Motta" date="2021-03-03T17:35:41.347651" description="approaching_static_object" revMajor="1" revMinor="0"/>
 	<ParameterDeclarations>
 		<ParameterDeclaration name="leadingSpeed" parameterType="double" value="0.0"/>
 	</ParameterDeclarations>
 	<CatalogLocations/>
 	<RoadNetwork>
-		<LogicFile filepath="Town01"/>
+		<LogicFile filepath="Town04"/>
 		<SceneGraphFile filepath=" "/>
 	</RoadNetwork>
 	<Entities>
@@ -29,7 +29,7 @@
 			</Vehicle>
 		</ScenarioObject>
 		<ScenarioObject name="adversary">
-			<Vehicle name="vehicle.carlamotors.carlacola" vehicleCategory="car">
+			<Vehicle name="vehicle.nissan.micra" vehicleCategory="car">
 				<ParameterDeclarations/>
 				<BoundingBox>
 					<Center x="1.3" y="0" z="0.8"/>
@@ -46,7 +46,7 @@
 			</Vehicle>
 		</ScenarioObject>
 		<ScenarioObject name="npc0">
-			<Vehicle name="vehicle.charger2020.charger2020" vehicleCategory="car">
+			<Vehicle name="vehicle.mustang.mustang" vehicleCategory="car">
 				<ParameterDeclarations/>
 				<BoundingBox>
 					<Center x="1.3" y="0" z="0.8"/>
@@ -80,7 +80,7 @@
 			</Vehicle>
 		</ScenarioObject>
 		<ScenarioObject name="npc2">
-			<Vehicle name="vehicle.chevrolet.impala" vehicleCategory="car">
+			<Vehicle name="vehicle.nissan.micra" vehicleCategory="car">
 				<ParameterDeclarations/>
 				<BoundingBox>
 					<Center x="1.3" y="0" z="0.8"/>
@@ -97,7 +97,7 @@
 			</Vehicle>
 		</ScenarioObject>
 		<ScenarioObject name="npc3">
-			<Vehicle name="vehicle.bmw.grandtourer" vehicleCategory="car">
+			<Vehicle name="vehicle.jeep.wrangler_rubicon" vehicleCategory="car">
 				<ParameterDeclarations/>
 				<BoundingBox>
 					<Center x="1.3" y="0" z="0.8"/>
@@ -114,7 +114,7 @@
 			</Vehicle>
 		</ScenarioObject>
 		<ScenarioObject name="npc4">
-			<Vehicle name="vehicle.chevrolet.impala" vehicleCategory="car">
+			<Vehicle name="vehicle.chargercop2020.chargercop2020" vehicleCategory="car">
 				<ParameterDeclarations/>
 				<BoundingBox>
 					<Center x="1.3" y="0" z="0.8"/>
@@ -131,7 +131,7 @@
 			</Vehicle>
 		</ScenarioObject>
 		<ScenarioObject name="npc5">
-			<Vehicle name="vehicle.mustang.mustang" vehicleCategory="car">
+			<Vehicle name="vehicle.citroen.c3" vehicleCategory="car">
 				<ParameterDeclarations/>
 				<BoundingBox>
 					<Center x="1.3" y="0" z="0.8"/>
@@ -148,7 +148,7 @@
 			</Vehicle>
 		</ScenarioObject>
 		<ScenarioObject name="npc6">
-			<Vehicle name="vehicle.carlamotors.carlacola" vehicleCategory="car">
+			<Vehicle name="vehicle.jeep.wrangler_rubicon" vehicleCategory="car">
 				<ParameterDeclarations/>
 				<BoundingBox>
 					<Center x="1.3" y="0" z="0.8"/>
@@ -165,7 +165,7 @@
 			</Vehicle>
 		</ScenarioObject>
 		<ScenarioObject name="npc7">
-			<Vehicle name="vehicle.lincoln2020.mkz2020" vehicleCategory="car">
+			<Vehicle name="vehicle.chargercop2020.chargercop2020" vehicleCategory="car">
 				<ParameterDeclarations/>
 				<BoundingBox>
 					<Center x="1.3" y="0" z="0.8"/>
@@ -182,7 +182,7 @@
 			</Vehicle>
 		</ScenarioObject>
 		<ScenarioObject name="npc8">
-			<Vehicle name="vehicle.carlamotors.carlacola" vehicleCategory="car">
+			<Vehicle name="vehicle.mustang.mustang" vehicleCategory="car">
 				<ParameterDeclarations/>
 				<BoundingBox>
 					<Center x="1.3" y="0" z="0.8"/>
@@ -199,7 +199,7 @@
 			</Vehicle>
 		</ScenarioObject>
 		<ScenarioObject name="npc9">
-			<Vehicle name="vehicle.volkswagen.t2" vehicleCategory="car">
+			<Vehicle name="vehicle.citroen.c3" vehicleCategory="car">
 				<ParameterDeclarations/>
 				<BoundingBox>
 					<Center x="1.3" y="0" z="0.8"/>
@@ -216,7 +216,7 @@
 			</Vehicle>
 		</ScenarioObject>
 		<ScenarioObject name="npc10">
-			<Vehicle name="vehicle.audi.a2" vehicleCategory="car">
+			<Vehicle name="vehicle.lincoln.mkz2017" vehicleCategory="car">
 				<ParameterDeclarations/>
 				<BoundingBox>
 					<Center x="1.3" y="0" z="0.8"/>
@@ -233,74 +233,6 @@
 			</Vehicle>
 		</ScenarioObject>
 		<ScenarioObject name="npc11">
-			<Vehicle name="vehicle.chargercop2020.chargercop2020" vehicleCategory="car">
-				<ParameterDeclarations/>
-				<BoundingBox>
-					<Center x="1.3" y="0" z="0.8"/>
-					<Dimensions height="1.5" length="4.5" width="1.8"/>
-				</BoundingBox>
-				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
-				<Axles>
-					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
-					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
-				</Axles>
-				<Properties>
-					<Property name="type" value="other_vehicle"/>
-				</Properties>
-			</Vehicle>
-		</ScenarioObject>
-		<ScenarioObject name="npc12">
-			<Vehicle name="vehicle.toyota.prius" vehicleCategory="car">
-				<ParameterDeclarations/>
-				<BoundingBox>
-					<Center x="1.3" y="0" z="0.8"/>
-					<Dimensions height="1.5" length="4.5" width="1.8"/>
-				</BoundingBox>
-				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
-				<Axles>
-					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
-					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
-				</Axles>
-				<Properties>
-					<Property name="type" value="other_vehicle"/>
-				</Properties>
-			</Vehicle>
-		</ScenarioObject>
-		<ScenarioObject name="npc13">
-			<Vehicle name="vehicle.nissan.micra" vehicleCategory="car">
-				<ParameterDeclarations/>
-				<BoundingBox>
-					<Center x="1.3" y="0" z="0.8"/>
-					<Dimensions height="1.5" length="4.5" width="1.8"/>
-				</BoundingBox>
-				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
-				<Axles>
-					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
-					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
-				</Axles>
-				<Properties>
-					<Property name="type" value="other_vehicle"/>
-				</Properties>
-			</Vehicle>
-		</ScenarioObject>
-		<ScenarioObject name="npc14">
-			<Vehicle name="vehicle.nissan.micra" vehicleCategory="car">
-				<ParameterDeclarations/>
-				<BoundingBox>
-					<Center x="1.3" y="0" z="0.8"/>
-					<Dimensions height="1.5" length="4.5" width="1.8"/>
-				</BoundingBox>
-				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
-				<Axles>
-					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
-					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
-				</Axles>
-				<Properties>
-					<Property name="type" value="other_vehicle"/>
-				</Properties>
-			</Vehicle>
-		</ScenarioObject>
-		<ScenarioObject name="npc15">
 			<Vehicle name="vehicle.chevrolet.impala" vehicleCategory="car">
 				<ParameterDeclarations/>
 				<BoundingBox>
@@ -317,7 +249,7 @@
 				</Properties>
 			</Vehicle>
 		</ScenarioObject>
-		<ScenarioObject name="npc16">
+		<ScenarioObject name="npc12">
 			<Vehicle name="vehicle.chargercop2020.chargercop2020" vehicleCategory="car">
 				<ParameterDeclarations/>
 				<BoundingBox>
@@ -334,8 +266,8 @@
 				</Properties>
 			</Vehicle>
 		</ScenarioObject>
-		<ScenarioObject name="npc17">
-			<Vehicle name="vehicle.mini.cooperst" vehicleCategory="car">
+		<ScenarioObject name="npc13">
+			<Vehicle name="vehicle.volkswagen.t2" vehicleCategory="car">
 				<ParameterDeclarations/>
 				<BoundingBox>
 					<Center x="1.3" y="0" z="0.8"/>
@@ -351,7 +283,7 @@
 				</Properties>
 			</Vehicle>
 		</ScenarioObject>
-		<ScenarioObject name="npc18">
+		<ScenarioObject name="npc14">
 			<Vehicle name="vehicle.seat.leon" vehicleCategory="car">
 				<ParameterDeclarations/>
 				<BoundingBox>
@@ -368,8 +300,76 @@
 				</Properties>
 			</Vehicle>
 		</ScenarioObject>
+		<ScenarioObject name="npc15">
+			<Vehicle name="vehicle.lincoln2020.mkz2020" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
+		<ScenarioObject name="npc16">
+			<Vehicle name="vehicle.bmw.grandtourer" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
+		<ScenarioObject name="npc17">
+			<Vehicle name="vehicle.dodge_charger.police" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
+		<ScenarioObject name="npc18">
+			<Vehicle name="vehicle.toyota.prius" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
 		<ScenarioObject name="npc19">
-			<Vehicle name="vehicle.jeep.wrangler_rubicon" vehicleCategory="car">
+			<Vehicle name="vehicle.mercedesccc.mercedesccc" vehicleCategory="car">
 				<ParameterDeclarations/>
 				<BoundingBox>
 					<Center x="1.3" y="0" z="0.8"/>
@@ -406,7 +406,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="1.597896654047543e-06" x="233.5437774658203" y="-198.7597198486328" z="0.29999998211860657"/>
+								<WorldPosition h="1.5731301880161874" x="-494.25" y="-240.90774536132812" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -415,7 +415,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="-8.125945081404022e-05" x="313.5437316894531" y="-199.1581268310547"/>
+								<WorldPosition h="-4.718628766818745" x="-493.1197509765625" y="-159.96524047851562"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -424,7 +424,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="-3.141588392532049" x="257.2313537597656" y="-55.84009552001953" z="0.29999998211860657"/>
+								<WorldPosition h="-1.568462332415551" x="-515.2948608398438" y="-221.75677490234375" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -433,7 +433,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="-3.141588392532049" x="219.64501953125" y="-129.7499542236328" z="0.29999998211860657"/>
+								<WorldPosition h="-1.568462332415551" x="-511.74993896484375" y="-240.9485626220703" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -442,7 +442,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="-3.141588392532049" x="234.26998901367188" y="-55.84001922607422" z="0.29999998211860657"/>
+								<WorldPosition h="1.5731301880161874" x="-490.7500305175781" y="-240.8995819091797" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -451,7 +451,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="-3.141588392532049" x="295.0817565917969" y="-195.5703125" z="0.29999998211860657"/>
+								<WorldPosition h="1.5645564072027864" x="-486.52874755859375" y="-225.4955596923828" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -460,7 +460,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="1.597896654047543e-06" x="288.23748779296875" y="-59.33000946044922" z="0.29999998211860657"/>
+								<WorldPosition h="-1.568462332415551" x="-508.3493347167969" y="-198.44044494628906" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -469,7 +469,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="-3.141588392532049" x="191.0800018310547" y="-55.84000015258789" z="0.29999998211860657"/>
+								<WorldPosition h="-1.5770359800708977" x="-510.7297058105469" y="-177.54283142089844" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -478,7 +478,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="1.5708015199590222" x="92.10990142822266" y="-170.5440216064453" z="0.29999998211860657"/>
+								<WorldPosition h="-1.568462332415551" x="-508.294921875" y="-221.74041748046875" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -487,7 +487,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="-1.5707971257432236" x="392.4700012207031" y="-68.86003875732422" z="0.29999998211860657"/>
+								<WorldPosition h="-1.568462332415551" x="-511.8493347167969" y="-198.4486083984375" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -496,7 +496,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="1.597896654047543e-06" x="131.729736328125" y="-59.33001708984375" z="0.29999998211860657"/>
+								<WorldPosition h="1.5645564072027864" x="-486.34954833984375" y="-196.79612731933594" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -505,7 +505,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="1.5707952615304606" x="339.0091247558594" y="-314.88629150390625" z="0.29999998211860657"/>
+								<WorldPosition h="-1.568462332415551" x="-511.794921875" y="-221.74859619140625" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -514,7 +514,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="-1.5707971257432236" x="88.6199722290039" y="-263.1473693847656" z="0.29999998211860657"/>
+								<WorldPosition h="-1.5770359800708977" x="-507.1129455566406" y="-158.8649444580078" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -523,7 +523,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition x="381.9800720214844" y="-330.8915100097656" z="0.29999998211860657"/>
+								<WorldPosition h="-1.5770359800708977" x="-514.1128540039062" y="-158.82125854492188" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -532,7 +532,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="-1.5707972589012782" x="87.71388244628906" y="-14.213335037231445" z="0.29999998211860657"/>
+								<WorldPosition h="-1.568462332415551" x="-515.3493041992188" y="-198.456787109375" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -541,7 +541,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="1.597896654047543e-06" x="173.11997985839844" y="-330.4599914550781" z="0.29999998211860657"/>
+								<WorldPosition h="1.5645564072027864" x="-489.7301330566406" y="-177.67459106445312" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -550,7 +550,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="-1.5707971257432236" x="392.4700012207031" y="-19.9200382232666" z="0.29999998211860657"/>
+								<WorldPosition h="1.5645564072027864" x="-486.230224609375" y="-177.69642639160156" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -559,7 +559,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="-1.5707971257432236" x="88.61998748779297" y="-101.83394622802734" z="0.29999998211860657"/>
+								<WorldPosition h="-1.568462332415551" x="-504.75" y="-240.93223571777344" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -568,7 +568,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="-3.141588392532049" x="173.11997985839844" y="-326.9700012207031" z="0.29999998211860657"/>
+								<WorldPosition h="-1.5770359800708977" x="-503.613037109375" y="-158.88677978515625" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -577,7 +577,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="-3.141588392532049" x="199.94998168945312" y="-326.9700012207031" z="0.29999998211860657"/>
+								<WorldPosition h="1.5731301880161874" x="-487.2500305175781" y="-240.89141845703125" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -586,7 +586,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="-1.5707971257432236" x="392.4700012207031" y="-308.2099914550781" z="0.29999998211860657"/>
+								<WorldPosition h="1.5645564072027864" x="-490.0286560058594" y="-225.47372436523438" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -595,7 +595,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="-1.5707971257432236" x="88.61998748779297" y="-111.18923950195312" z="0.29999998211860657"/>
+								<WorldPosition h="-1.5770359800708977" x="-507.22979736328125" y="-177.56466674804688" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>

@@ -88,7 +88,7 @@ class Scenario(ScenarioGenerator):
         #step_time = pyoscx.TransitionDynamics(pyoscx.DynamicsShapes.step,pyoscx.DynamicsDimension.time,1)
         #targetspeed = pyoscx.AbsoluteSpeedAction(15,step_time)
 
-        egostart = pyoscx.TeleportAction(pyoscx.WorldPosition(-2.6,80,0.5,4.7))
+        #egostart = pyoscx.TeleportAction(pyoscx.WorldPosition(-2.6,80,0.5,4.7))
         egospeed = pyoscx.AbsoluteSpeedAction(kwargs['approachSpeed'],pyoscx.TransitionDynamics(pyoscx.DynamicsShapes.step,pyoscx.DynamicsDimension.distance,10))
 
 

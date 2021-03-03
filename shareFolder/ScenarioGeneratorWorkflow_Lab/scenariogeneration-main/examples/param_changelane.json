@@ -2,7 +2,7 @@
     "Parameters": [
         {
             "Town": [
-                "Town03"
+                "Town04"
             ],
             "approachSpeed": [
                 10, 15
@@ -17,7 +17,7 @@
                 10
             ],
             "npc_number": [
-                30
+                20,40
             ],
             "check_lane": ["left"]
         }

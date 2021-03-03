@@ -26,7 +26,7 @@ class Scenario(ScenarioGenerator):
 
         #get random position for ego, target and npcs
         if(kwargs['randomPosition']):
-            egostart, targetstart, npc_spawns = util.get_random_spawn_points( 200,kwargs['check_lane'])
+            egostart, targetstart, npc_spawns = util.get_random_spawn_points( 150,kwargs['check_lane'])
         else:
             #put a default position here
             print("default position not setted")

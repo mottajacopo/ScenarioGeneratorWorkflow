@@ -1,16 +1,16 @@
 <?xml version="1.0" ?>
 <OpenSCENARIO xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="OpenSccenario.xsd">
-	<FileHeader author="Bonora_Motta" date="2021-02-25T18:34:02.061434" description="follow_leading_vehicle" revMajor="1" revMinor="0"/>
+	<FileHeader author="Bonora_Motta" date="2021-03-03T17:30:40.782998" description="follow_leading_vehicle" revMajor="1" revMinor="0"/>
 	<ParameterDeclarations>
 		<ParameterDeclaration name="leadingSpeed" parameterType="double" value="4.0"/>
 	</ParameterDeclarations>
 	<CatalogLocations/>
 	<RoadNetwork>
-		<LogicFile filepath="Town03"/>
+		<LogicFile filepath="Town04"/>
 		<SceneGraphFile filepath=" "/>
 	</RoadNetwork>
 	<Entities>
-		<ScenarioObject name="pippo">
+		<ScenarioObject name="hero">
 			<Vehicle name="vehicle.tesla.model3" vehicleCategory="car">
 				<ParameterDeclarations/>
 				<BoundingBox>
@@ -29,7 +29,7 @@
 			</Vehicle>
 		</ScenarioObject>
 		<ScenarioObject name="adversary">
-			<Vehicle name="vehicle.mercedesccc.mercedesccc" vehicleCategory="car">
+			<Vehicle name="vehicle.carlamotors.carlacola" vehicleCategory="car">
 				<ParameterDeclarations/>
 				<BoundingBox>
 					<Center x="1.3" y="0" z="0.8"/>
@@ -46,7 +46,7 @@
 			</Vehicle>
 		</ScenarioObject>
 		<ScenarioObject name="npc0">
-			<Vehicle name="vehicle.nissan.patrol" vehicleCategory="car">
+			<Vehicle name="vehicle.bmw.grandtourer" vehicleCategory="car">
 				<ParameterDeclarations/>
 				<BoundingBox>
 					<Center x="1.3" y="0" z="0.8"/>
@@ -63,7 +63,7 @@
 			</Vehicle>
 		</ScenarioObject>
 		<ScenarioObject name="npc1">
-			<Vehicle name="vehicle.chevrolet.impala" vehicleCategory="car">
+			<Vehicle name="vehicle.audi.etron" vehicleCategory="car">
 				<ParameterDeclarations/>
 				<BoundingBox>
 					<Center x="1.3" y="0" z="0.8"/>
@@ -80,7 +80,7 @@
 			</Vehicle>
 		</ScenarioObject>
 		<ScenarioObject name="npc2">
-			<Vehicle name="vehicle.mercedesccc.mercedesccc" vehicleCategory="car">
+			<Vehicle name="vehicle.toyota.prius" vehicleCategory="car">
 				<ParameterDeclarations/>
 				<BoundingBox>
 					<Center x="1.3" y="0" z="0.8"/>
@@ -97,7 +97,7 @@
 			</Vehicle>
 		</ScenarioObject>
 		<ScenarioObject name="npc3">
-			<Vehicle name="vehicle.dodge_charger.police" vehicleCategory="car">
+			<Vehicle name="vehicle.audi.a2" vehicleCategory="car">
 				<ParameterDeclarations/>
 				<BoundingBox>
 					<Center x="1.3" y="0" z="0.8"/>
@@ -114,7 +114,7 @@
 			</Vehicle>
 		</ScenarioObject>
 		<ScenarioObject name="npc4">
-			<Vehicle name="vehicle.audi.tt" vehicleCategory="car">
+			<Vehicle name="vehicle.nissan.micra" vehicleCategory="car">
 				<ParameterDeclarations/>
 				<BoundingBox>
 					<Center x="1.3" y="0" z="0.8"/>
@@ -131,7 +131,7 @@
 			</Vehicle>
 		</ScenarioObject>
 		<ScenarioObject name="npc5">
-			<Vehicle name="vehicle.mercedes-benz.coupe" vehicleCategory="car">
+			<Vehicle name="vehicle.bmw.grandtourer" vehicleCategory="car">
 				<ParameterDeclarations/>
 				<BoundingBox>
 					<Center x="1.3" y="0" z="0.8"/>
@@ -148,210 +148,6 @@
 			</Vehicle>
 		</ScenarioObject>
 		<ScenarioObject name="npc6">
-			<Vehicle name="vehicle.chevrolet.impala" vehicleCategory="car">
-				<ParameterDeclarations/>
-				<BoundingBox>
-					<Center x="1.3" y="0" z="0.8"/>
-					<Dimensions height="1.5" length="4.5" width="1.8"/>
-				</BoundingBox>
-				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
-				<Axles>
-					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
-					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
-				</Axles>
-				<Properties>
-					<Property name="type" value="other_vehicle"/>
-				</Properties>
-			</Vehicle>
-		</ScenarioObject>
-		<ScenarioObject name="npc7">
-			<Vehicle name="vehicle.seat.leon" vehicleCategory="car">
-				<ParameterDeclarations/>
-				<BoundingBox>
-					<Center x="1.3" y="0" z="0.8"/>
-					<Dimensions height="1.5" length="4.5" width="1.8"/>
-				</BoundingBox>
-				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
-				<Axles>
-					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
-					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
-				</Axles>
-				<Properties>
-					<Property name="type" value="other_vehicle"/>
-				</Properties>
-			</Vehicle>
-		</ScenarioObject>
-		<ScenarioObject name="npc8">
-			<Vehicle name="vehicle.audi.tt" vehicleCategory="car">
-				<ParameterDeclarations/>
-				<BoundingBox>
-					<Center x="1.3" y="0" z="0.8"/>
-					<Dimensions height="1.5" length="4.5" width="1.8"/>
-				</BoundingBox>
-				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
-				<Axles>
-					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
-					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
-				</Axles>
-				<Properties>
-					<Property name="type" value="other_vehicle"/>
-				</Properties>
-			</Vehicle>
-		</ScenarioObject>
-		<ScenarioObject name="npc9">
-			<Vehicle name="vehicle.mini.cooperst" vehicleCategory="car">
-				<ParameterDeclarations/>
-				<BoundingBox>
-					<Center x="1.3" y="0" z="0.8"/>
-					<Dimensions height="1.5" length="4.5" width="1.8"/>
-				</BoundingBox>
-				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
-				<Axles>
-					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
-					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
-				</Axles>
-				<Properties>
-					<Property name="type" value="other_vehicle"/>
-				</Properties>
-			</Vehicle>
-		</ScenarioObject>
-		<ScenarioObject name="npc10">
-			<Vehicle name="vehicle.jeep.wrangler_rubicon" vehicleCategory="car">
-				<ParameterDeclarations/>
-				<BoundingBox>
-					<Center x="1.3" y="0" z="0.8"/>
-					<Dimensions height="1.5" length="4.5" width="1.8"/>
-				</BoundingBox>
-				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
-				<Axles>
-					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
-					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
-				</Axles>
-				<Properties>
-					<Property name="type" value="other_vehicle"/>
-				</Properties>
-			</Vehicle>
-		</ScenarioObject>
-		<ScenarioObject name="npc11">
-			<Vehicle name="vehicle.dodge_charger.police" vehicleCategory="car">
-				<ParameterDeclarations/>
-				<BoundingBox>
-					<Center x="1.3" y="0" z="0.8"/>
-					<Dimensions height="1.5" length="4.5" width="1.8"/>
-				</BoundingBox>
-				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
-				<Axles>
-					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
-					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
-				</Axles>
-				<Properties>
-					<Property name="type" value="other_vehicle"/>
-				</Properties>
-			</Vehicle>
-		</ScenarioObject>
-		<ScenarioObject name="npc12">
-			<Vehicle name="vehicle.audi.tt" vehicleCategory="car">
-				<ParameterDeclarations/>
-				<BoundingBox>
-					<Center x="1.3" y="0" z="0.8"/>
-					<Dimensions height="1.5" length="4.5" width="1.8"/>
-				</BoundingBox>
-				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
-				<Axles>
-					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
-					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
-				</Axles>
-				<Properties>
-					<Property name="type" value="other_vehicle"/>
-				</Properties>
-			</Vehicle>
-		</ScenarioObject>
-		<ScenarioObject name="npc13">
-			<Vehicle name="vehicle.mini.cooperst" vehicleCategory="car">
-				<ParameterDeclarations/>
-				<BoundingBox>
-					<Center x="1.3" y="0" z="0.8"/>
-					<Dimensions height="1.5" length="4.5" width="1.8"/>
-				</BoundingBox>
-				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
-				<Axles>
-					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
-					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
-				</Axles>
-				<Properties>
-					<Property name="type" value="other_vehicle"/>
-				</Properties>
-			</Vehicle>
-		</ScenarioObject>
-		<ScenarioObject name="npc14">
-			<Vehicle name="vehicle.dodge_charger.police" vehicleCategory="car">
-				<ParameterDeclarations/>
-				<BoundingBox>
-					<Center x="1.3" y="0" z="0.8"/>
-					<Dimensions height="1.5" length="4.5" width="1.8"/>
-				</BoundingBox>
-				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
-				<Axles>
-					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
-					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
-				</Axles>
-				<Properties>
-					<Property name="type" value="other_vehicle"/>
-				</Properties>
-			</Vehicle>
-		</ScenarioObject>
-		<ScenarioObject name="npc15">
-			<Vehicle name="vehicle.mini.cooperst" vehicleCategory="car">
-				<ParameterDeclarations/>
-				<BoundingBox>
-					<Center x="1.3" y="0" z="0.8"/>
-					<Dimensions height="1.5" length="4.5" width="1.8"/>
-				</BoundingBox>
-				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
-				<Axles>
-					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
-					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
-				</Axles>
-				<Properties>
-					<Property name="type" value="other_vehicle"/>
-				</Properties>
-			</Vehicle>
-		</ScenarioObject>
-		<ScenarioObject name="npc16">
-			<Vehicle name="vehicle.mustang.mustang" vehicleCategory="car">
-				<ParameterDeclarations/>
-				<BoundingBox>
-					<Center x="1.3" y="0" z="0.8"/>
-					<Dimensions height="1.5" length="4.5" width="1.8"/>
-				</BoundingBox>
-				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
-				<Axles>
-					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
-					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
-				</Axles>
-				<Properties>
-					<Property name="type" value="other_vehicle"/>
-				</Properties>
-			</Vehicle>
-		</ScenarioObject>
-		<ScenarioObject name="npc17">
-			<Vehicle name="vehicle.lincoln.mkz2017" vehicleCategory="car">
-				<ParameterDeclarations/>
-				<BoundingBox>
-					<Center x="1.3" y="0" z="0.8"/>
-					<Dimensions height="1.5" length="4.5" width="1.8"/>
-				</BoundingBox>
-				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
-				<Axles>
-					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
-					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
-				</Axles>
-				<Properties>
-					<Property name="type" value="other_vehicle"/>
-				</Properties>
-			</Vehicle>
-		</ScenarioObject>
-		<ScenarioObject name="npc18">
 			<Vehicle name="vehicle.lincoln2020.mkz2020" vehicleCategory="car">
 				<ParameterDeclarations/>
 				<BoundingBox>
@@ -368,8 +164,552 @@
 				</Properties>
 			</Vehicle>
 		</ScenarioObject>
+		<ScenarioObject name="npc7">
+			<Vehicle name="vehicle.carlamotors.carlacola" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
+		<ScenarioObject name="npc8">
+			<Vehicle name="vehicle.jeep.wrangler_rubicon" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
+		<ScenarioObject name="npc9">
+			<Vehicle name="vehicle.lincoln2020.mkz2020" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
+		<ScenarioObject name="npc10">
+			<Vehicle name="vehicle.lincoln.mkz2017" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
+		<ScenarioObject name="npc11">
+			<Vehicle name="vehicle.mini.cooperst" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
+		<ScenarioObject name="npc12">
+			<Vehicle name="vehicle.nissan.micra" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
+		<ScenarioObject name="npc13">
+			<Vehicle name="vehicle.carlamotors.carlacola" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
+		<ScenarioObject name="npc14">
+			<Vehicle name="vehicle.chevrolet.impala" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
+		<ScenarioObject name="npc15">
+			<Vehicle name="vehicle.mustang.mustang" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
+		<ScenarioObject name="npc16">
+			<Vehicle name="vehicle.chevrolet.impala" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
+		<ScenarioObject name="npc17">
+			<Vehicle name="vehicle.audi.etron" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
+		<ScenarioObject name="npc18">
+			<Vehicle name="vehicle.nissan.micra" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
 		<ScenarioObject name="npc19">
-			<Vehicle name="vehicle.audi.a2" vehicleCategory="car">
+			<Vehicle name="vehicle.jeep.wrangler_rubicon" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
+		<ScenarioObject name="npc20">
+			<Vehicle name="vehicle.volkswagen.t2" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
+		<ScenarioObject name="npc21">
+			<Vehicle name="vehicle.seat.leon" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
+		<ScenarioObject name="npc22">
+			<Vehicle name="vehicle.jeep.wrangler_rubicon" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
+		<ScenarioObject name="npc23">
+			<Vehicle name="vehicle.charger2020.charger2020" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
+		<ScenarioObject name="npc24">
+			<Vehicle name="vehicle.lincoln2020.mkz2020" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
+		<ScenarioObject name="npc25">
+			<Vehicle name="vehicle.chargercop2020.chargercop2020" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
+		<ScenarioObject name="npc26">
+			<Vehicle name="vehicle.audi.etron" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
+		<ScenarioObject name="npc27">
+			<Vehicle name="vehicle.nissan.patrol" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
+		<ScenarioObject name="npc28">
+			<Vehicle name="vehicle.seat.leon" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
+		<ScenarioObject name="npc29">
+			<Vehicle name="vehicle.mercedesccc.mercedesccc" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
+		<ScenarioObject name="npc30">
+			<Vehicle name="vehicle.seat.leon" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
+		<ScenarioObject name="npc31">
+			<Vehicle name="vehicle.mercedesccc.mercedesccc" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
+		<ScenarioObject name="npc32">
+			<Vehicle name="vehicle.mercedesccc.mercedesccc" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
+		<ScenarioObject name="npc33">
+			<Vehicle name="vehicle.mercedes-benz.coupe" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
+		<ScenarioObject name="npc34">
+			<Vehicle name="vehicle.jeep.wrangler_rubicon" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
+		<ScenarioObject name="npc35">
+			<Vehicle name="vehicle.nissan.patrol" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
+		<ScenarioObject name="npc36">
+			<Vehicle name="vehicle.charger2020.charger2020" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
+		<ScenarioObject name="npc37">
+			<Vehicle name="vehicle.chargercop2020.chargercop2020" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
+		<ScenarioObject name="npc38">
+			<Vehicle name="vehicle.toyota.prius" vehicleCategory="car">
+				<ParameterDeclarations/>
+				<BoundingBox>
+					<Center x="1.3" y="0" z="0.8"/>
+					<Dimensions height="1.5" length="4.5" width="1.8"/>
+				</BoundingBox>
+				<Performance maxAcceleration="10" maxDeceleration="10" maxSpeed="69"/>
+				<Axles>
+					<FrontAxle maxSteering="0.523598775598" positionX="2.98" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+					<RearAxle maxSteering="0.523598775598" positionX="0" positionZ="0.4" trackWidth="1.68" wheelDiameter="0.8"/>
+				</Axles>
+				<Properties>
+					<Property name="type" value="other_vehicle"/>
+				</Properties>
+			</Vehicle>
+		</ScenarioObject>
+		<ScenarioObject name="npc39">
+			<Vehicle name="vehicle.nissan.micra" vehicleCategory="car">
 				<ParameterDeclarations/>
 				<BoundingBox>
 					<Center x="1.3" y="0" z="0.8"/>
@@ -402,11 +742,11 @@
 						</Environment>
 					</EnvironmentAction>
 				</GlobalAction>
-				<Private entityRef="pippo">
+				<Private entityRef="hero">
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="-1.6057760156067058" x="-2.9483113288879395" y="78.9326171875" z="0.27530714869499207"/>
+								<WorldPosition h="-0.0013408655885608558" x="-69.6414566040039" y="-30.3536376953125" z="10.215619087219238"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -415,7 +755,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="-1.5954673185011727" x="-2.4287302494049072" y="62.9149284362793"/>
+								<WorldPosition h="-0.0013409016088548964" x="-59.6414680480957" y="-30.367046356201172" z="9.977627754211426"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -424,7 +764,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="3.126655515667757" x="71.36287689208984" y="7.414976596832275" z="0.44999998807907104"/>
+								<WorldPosition h="-1.566872158928665" x="-12.754473686218262" y="49.13283920288086" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -433,7 +773,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="-1.6057760156067058" x="-2.9483113288879395" y="42.07135009765625" z="0.27530714869499207"/>
+								<WorldPosition h="1.5758423512703241" x="5.685600280761719" y="-152.66929626464844" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -442,7 +782,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="-1.5734765321159523" x="82.69561004638672" y="184.77346801757812" z="0.27530714869499207"/>
+								<WorldPosition h="1.5758423512703241" x="16.185461044311523" y="-152.61630249023438" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -451,7 +791,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="-1.568069116680601" x="-85.14688110351562" y="103.27565002441406" z="0.27530714869499207"/>
+								<WorldPosition h="3.1375323981918584" x="68.3453140258789" y="-9.860311508178711" z="11.457353591918945"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -460,7 +800,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="1.5735231374350287" x="-77.88716888427734" y="-40.30692672729492" z="0.6488781571388245"/>
+								<WorldPosition h="3.1402520182970473" x="-85.33257293701172" y="-16.332626342773438" z="9.934486389160156"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -469,7 +809,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="3.120172049993959" x="-96.5201187133789" y="140.34010314941406" z="0.3999999761581421"/>
+								<WorldPosition h="-1.565750568635578" x="-8.447552680969238" y="-126.31411743164062" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -478,7 +818,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="3.136450622157068" x="-54.75082015991211" y="2.8988778591156006" z="0.27530714869499207"/>
+								<WorldPosition h="-1.566872158928665" x="-12.905157089233398" y="87.53253936767578" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -487,7 +827,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="-1.5644689223609773" x="-6.573556900024414" y="-42.606361389160156" z="0.27530714869499207"/>
+								<WorldPosition h="-2.1826868820125926" x="-24.995059967041016" y="-123.359619140625" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -496,7 +836,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="-1.568069116680601" x="-84.8062973022461" y="-21.521087646484375" z="0.3499999940395355"/>
+								<WorldPosition h="1.5747207609772373" x="15.111461639404297" y="83.34786987304688" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -505,7 +845,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="1.5735231374350287" x="-74.38717651367188" y="-40.29738235473633" z="0.6488781571388245"/>
+								<WorldPosition h="-1.566872158928665" x="-5.754527568817139" y="49.160316467285156" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -514,7 +854,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="-1.372263393325833" x="-8.317538261413574" y="-25.910858154296875" z="0.27530714869499207"/>
+								<WorldPosition h="-1.566872158928665" x="-5.905210018157959" y="87.56002044677734" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -523,7 +863,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="-1.5954671853431182" x="-4.364792346954346" y="126.3371810913086" z="0.27530714869499207"/>
+								<WorldPosition h="1.5758423512703241" x="5.25870943069458" y="-68.0704116821289" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -532,7 +872,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="-1.5713168416299526" x="-148.97052001953125" y="72.44021606445312" z="0.5952509641647339"/>
+								<WorldPosition h="-1.565750568635578" x="-8.83758544921875" y="-49.01508331298828" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -541,7 +881,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="3.1164681255498765" x="-6.594831466674805" y="208.17323303222656" z="0.27530714869499207"/>
+								<WorldPosition h="-1.565750568635578" x="-12.072138786315918" y="-101.63208770751953" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -550,7 +890,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="-0.025124838048512184" x="94.79740905761719" y="191.6208038330078" z="0.27530714869499207"/>
+								<WorldPosition h="-1.565750568635578" x="-4.947597026824951" y="-126.29646301269531" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -559,7 +899,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="1.5735231374350287" x="-77.98506927490234" y="44.03977966308594" z="0.27530714869499207"/>
+								<WorldPosition h="-1.566872158928665" x="-9.254500389099121" y="49.14657974243164" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -568,7 +908,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="3.1152534577766917" x="134.91160583496094" y="75.6125717163086" z="8.305596351623535"/>
+								<WorldPosition h="1.5758423512703241" x="8.901467323303223" y="-96.35236358642578" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -577,7 +917,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="-2.350553648687448" x="-97.62361145019531" y="-19.07927894592285" z="0.27530714869499207"/>
+								<WorldPosition h="3.1375323981918584" x="68.31689453125" y="-16.860254287719727" z="11.457353591918945"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -586,7 +926,7 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="3.120172049993959" x="125.36009216308594" y="135.58682250976562" z="8.305596351623535"/>
+								<WorldPosition h="1.5758423512703241" x="12.401419639587402" y="-96.33470153808594" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -595,7 +935,187 @@
 					<PrivateAction>
 						<TeleportAction>
 							<Position>
-								<WorldPosition h="1.5461246692983481" x="7.603518009185791" y="43.829612731933594" z="0.27530714869499207"/>
+								<WorldPosition h="1.5747207609772373" x="4.61154317855835" y="83.30665588378906" z="0.2819424271583557"/>
+							</Position>
+						</TeleportAction>
+					</PrivateAction>
+				</Private>
+				<Private entityRef="npc20">
+					<PrivateAction>
+						<TeleportAction>
+							<Position>
+								<WorldPosition h="3.1402520182970473" x="-105.49461364746094" y="-5.805544376373291" z="9.771309852600098"/>
+							</Position>
+						</TeleportAction>
+					</PrivateAction>
+				</Private>
+				<Private entityRef="npc21">
+					<PrivateAction>
+						<TeleportAction>
+							<Position>
+								<WorldPosition h="1.5758423512703241" x="12.258620262145996" y="-68.03508758544922" z="0.2819424271583557"/>
+							</Position>
+						</TeleportAction>
+					</PrivateAction>
+				</Private>
+				<Private entityRef="npc22">
+					<PrivateAction>
+						<TeleportAction>
+							<Position>
+								<WorldPosition h="-1.566872158928665" x="-16.405128479003906" y="87.51880645751953" z="0.2819424271583557"/>
+							</Position>
+						</TeleportAction>
+					</PrivateAction>
+				</Private>
+				<Private entityRef="npc23">
+					<PrivateAction>
+						<TeleportAction>
+							<Position>
+								<WorldPosition h="1.5747207609772373" x="8.180586814880371" y="65.72052001953125" z="0.2819424271583557"/>
+							</Position>
+						</TeleportAction>
+					</PrivateAction>
+				</Private>
+				<Private entityRef="npc24">
+					<PrivateAction>
+						<TeleportAction>
+							<Position>
+								<WorldPosition h="-0.0013408655885608558" x="-69.64614868164062" y="-33.853633880615234" z="10.215619087219238"/>
+							</Position>
+						</TeleportAction>
+					</PrivateAction>
+				</Private>
+				<Private entityRef="npc25">
+					<PrivateAction>
+						<TeleportAction>
+							<Position>
+								<WorldPosition h="-1.565750568635578" x="-15.837495803833008" y="-49.0504150390625" z="0.2819424271583557"/>
+							</Position>
+						</TeleportAction>
+					</PrivateAction>
+				</Private>
+				<Private entityRef="npc26">
+					<PrivateAction>
+						<TeleportAction>
+							<Position>
+								<WorldPosition h="-1.565750568635578" x="-8.687726974487305" y="-78.71473693847656" z="0.2819424271583557"/>
+							</Position>
+						</TeleportAction>
+					</PrivateAction>
+				</Private>
+				<Private entityRef="npc27">
+					<PrivateAction>
+						<TeleportAction>
+							<Position>
+								<WorldPosition h="-1.565750568635578" x="-15.572093963623047" y="-101.64974212646484" z="0.2819424271583557"/>
+							</Position>
+						</TeleportAction>
+					</PrivateAction>
+				</Private>
+				<Private entityRef="npc28">
+					<PrivateAction>
+						<TeleportAction>
+							<Position>
+								<WorldPosition h="3.1402520182970473" x="-85.31788635253906" y="-12.832643508911133" z="9.934486389160156"/>
+							</Position>
+						</TeleportAction>
+					</PrivateAction>
+				</Private>
+				<Private entityRef="npc29">
+					<PrivateAction>
+						<TeleportAction>
+							<Position>
+								<WorldPosition h="-1.565750568635578" x="-5.337629318237305" y="-48.9974250793457" z="0.2819424271583557"/>
+							</Position>
+						</TeleportAction>
+					</PrivateAction>
+				</Private>
+				<Private entityRef="npc30">
+					<PrivateAction>
+						<TeleportAction>
+							<Position>
+								<WorldPosition h="3.1402520182970473" x="-85.3084945678711" y="-5.832650661468506" z="9.934486389160156"/>
+							</Position>
+						</TeleportAction>
+					</PrivateAction>
+				</Private>
+				<Private entityRef="npc31">
+					<PrivateAction>
+						<TeleportAction>
+							<Position>
+								<WorldPosition h="-1.565750568635578" x="-5.072226047515869" y="-101.59675598144531" z="0.2819424271583557"/>
+							</Position>
+						</TeleportAction>
+					</PrivateAction>
+				</Private>
+				<Private entityRef="npc32">
+					<PrivateAction>
+						<TeleportAction>
+							<Position>
+								<WorldPosition h="1.5758423512703241" x="9.065461158752441" y="-128.85195922851562" z="0.2819424271583557"/>
+							</Position>
+						</TeleportAction>
+					</PrivateAction>
+				</Private>
+				<Private entityRef="npc33">
+					<PrivateAction>
+						<TeleportAction>
+							<Position>
+								<WorldPosition h="-0.0013408655885608558" x="-69.65084075927734" y="-37.35363006591797" z="10.215619087219238"/>
+							</Position>
+						</TeleportAction>
+					</PrivateAction>
+				</Private>
+				<Private entityRef="npc34">
+					<PrivateAction>
+						<TeleportAction>
+							<Position>
+								<WorldPosition h="1.5747207609772373" x="8.111515998840332" y="83.32039642333984" z="0.2819424271583557"/>
+							</Position>
+						</TeleportAction>
+					</PrivateAction>
+				</Private>
+				<Private entityRef="npc35">
+					<PrivateAction>
+						<TeleportAction>
+							<Position>
+								<WorldPosition h="1.5758423512703241" x="5.401512145996094" y="-96.37002563476562" z="0.2819424271583557"/>
+							</Position>
+						</TeleportAction>
+					</PrivateAction>
+				</Private>
+				<Private entityRef="npc36">
+					<PrivateAction>
+						<TeleportAction>
+							<Position>
+								<WorldPosition h="1.5747207609772373" x="4.778726577758789" y="40.70698547363281" z="0.2819424271583557"/>
+							</Position>
+						</TeleportAction>
+					</PrivateAction>
+				</Private>
+				<Private entityRef="npc37">
+					<PrivateAction>
+						<TeleportAction>
+							<Position>
+								<WorldPosition h="1.5758423512703241" x="5.5655059814453125" y="-128.86962890625" z="0.2819424271583557"/>
+							</Position>
+						</TeleportAction>
+					</PrivateAction>
+				</Private>
+				<Private entityRef="npc38">
+					<PrivateAction>
+						<TeleportAction>
+							<Position>
+								<WorldPosition h="1.5758423512703241" x="16.065366744995117" y="-128.81663513183594" z="0.2819424271583557"/>
+							</Position>
+						</TeleportAction>
+					</PrivateAction>
+				</Private>
+				<Private entityRef="npc39">
+					<PrivateAction>
+						<TeleportAction>
+							<Position>
+								<WorldPosition h="-1.565750568635578" x="-12.187687873840332" y="-78.73241424560547" z="0.2819424271583557"/>
 							</Position>
 						</TeleportAction>
 					</PrivateAction>
@@ -1429,6 +1949,786 @@
 						<EntityRef entityRef="npc19"/>
 					</Actors>
 					<Maneuver name="AutopilotSequenceNPC19">
+						<Event maximumExecutionCount="1" name="StartAutopilot" priority="overwrite">
+							<Action name="StartAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="true"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StartCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="0"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+						<Event maximumExecutionCount="1" name="StopAutopilot" priority="overwrite">
+							<Action name="StopAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="false"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StopCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="30"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+					</Maneuver>
+				</ManeuverGroup>
+				<ManeuverGroup maximumExecutionCount="1" name="AutopilotSequenceNPC20">
+					<Actors selectTriggeringEntities="false">
+						<EntityRef entityRef="npc20"/>
+					</Actors>
+					<Maneuver name="AutopilotSequenceNPC20">
+						<Event maximumExecutionCount="1" name="StartAutopilot" priority="overwrite">
+							<Action name="StartAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="true"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StartCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="0"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+						<Event maximumExecutionCount="1" name="StopAutopilot" priority="overwrite">
+							<Action name="StopAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="false"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StopCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="30"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+					</Maneuver>
+				</ManeuverGroup>
+				<ManeuverGroup maximumExecutionCount="1" name="AutopilotSequenceNPC21">
+					<Actors selectTriggeringEntities="false">
+						<EntityRef entityRef="npc21"/>
+					</Actors>
+					<Maneuver name="AutopilotSequenceNPC21">
+						<Event maximumExecutionCount="1" name="StartAutopilot" priority="overwrite">
+							<Action name="StartAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="true"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StartCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="0"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+						<Event maximumExecutionCount="1" name="StopAutopilot" priority="overwrite">
+							<Action name="StopAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="false"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StopCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="30"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+					</Maneuver>
+				</ManeuverGroup>
+				<ManeuverGroup maximumExecutionCount="1" name="AutopilotSequenceNPC22">
+					<Actors selectTriggeringEntities="false">
+						<EntityRef entityRef="npc22"/>
+					</Actors>
+					<Maneuver name="AutopilotSequenceNPC22">
+						<Event maximumExecutionCount="1" name="StartAutopilot" priority="overwrite">
+							<Action name="StartAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="true"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StartCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="0"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+						<Event maximumExecutionCount="1" name="StopAutopilot" priority="overwrite">
+							<Action name="StopAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="false"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StopCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="30"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+					</Maneuver>
+				</ManeuverGroup>
+				<ManeuverGroup maximumExecutionCount="1" name="AutopilotSequenceNPC23">
+					<Actors selectTriggeringEntities="false">
+						<EntityRef entityRef="npc23"/>
+					</Actors>
+					<Maneuver name="AutopilotSequenceNPC23">
+						<Event maximumExecutionCount="1" name="StartAutopilot" priority="overwrite">
+							<Action name="StartAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="true"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StartCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="0"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+						<Event maximumExecutionCount="1" name="StopAutopilot" priority="overwrite">
+							<Action name="StopAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="false"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StopCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="30"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+					</Maneuver>
+				</ManeuverGroup>
+				<ManeuverGroup maximumExecutionCount="1" name="AutopilotSequenceNPC24">
+					<Actors selectTriggeringEntities="false">
+						<EntityRef entityRef="npc24"/>
+					</Actors>
+					<Maneuver name="AutopilotSequenceNPC24">
+						<Event maximumExecutionCount="1" name="StartAutopilot" priority="overwrite">
+							<Action name="StartAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="true"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StartCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="0"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+						<Event maximumExecutionCount="1" name="StopAutopilot" priority="overwrite">
+							<Action name="StopAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="false"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StopCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="30"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+					</Maneuver>
+				</ManeuverGroup>
+				<ManeuverGroup maximumExecutionCount="1" name="AutopilotSequenceNPC25">
+					<Actors selectTriggeringEntities="false">
+						<EntityRef entityRef="npc25"/>
+					</Actors>
+					<Maneuver name="AutopilotSequenceNPC25">
+						<Event maximumExecutionCount="1" name="StartAutopilot" priority="overwrite">
+							<Action name="StartAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="true"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StartCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="0"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+						<Event maximumExecutionCount="1" name="StopAutopilot" priority="overwrite">
+							<Action name="StopAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="false"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StopCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="30"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+					</Maneuver>
+				</ManeuverGroup>
+				<ManeuverGroup maximumExecutionCount="1" name="AutopilotSequenceNPC26">
+					<Actors selectTriggeringEntities="false">
+						<EntityRef entityRef="npc26"/>
+					</Actors>
+					<Maneuver name="AutopilotSequenceNPC26">
+						<Event maximumExecutionCount="1" name="StartAutopilot" priority="overwrite">
+							<Action name="StartAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="true"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StartCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="0"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+						<Event maximumExecutionCount="1" name="StopAutopilot" priority="overwrite">
+							<Action name="StopAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="false"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StopCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="30"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+					</Maneuver>
+				</ManeuverGroup>
+				<ManeuverGroup maximumExecutionCount="1" name="AutopilotSequenceNPC27">
+					<Actors selectTriggeringEntities="false">
+						<EntityRef entityRef="npc27"/>
+					</Actors>
+					<Maneuver name="AutopilotSequenceNPC27">
+						<Event maximumExecutionCount="1" name="StartAutopilot" priority="overwrite">
+							<Action name="StartAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="true"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StartCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="0"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+						<Event maximumExecutionCount="1" name="StopAutopilot" priority="overwrite">
+							<Action name="StopAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="false"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StopCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="30"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+					</Maneuver>
+				</ManeuverGroup>
+				<ManeuverGroup maximumExecutionCount="1" name="AutopilotSequenceNPC28">
+					<Actors selectTriggeringEntities="false">
+						<EntityRef entityRef="npc28"/>
+					</Actors>
+					<Maneuver name="AutopilotSequenceNPC28">
+						<Event maximumExecutionCount="1" name="StartAutopilot" priority="overwrite">
+							<Action name="StartAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="true"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StartCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="0"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+						<Event maximumExecutionCount="1" name="StopAutopilot" priority="overwrite">
+							<Action name="StopAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="false"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StopCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="30"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+					</Maneuver>
+				</ManeuverGroup>
+				<ManeuverGroup maximumExecutionCount="1" name="AutopilotSequenceNPC29">
+					<Actors selectTriggeringEntities="false">
+						<EntityRef entityRef="npc29"/>
+					</Actors>
+					<Maneuver name="AutopilotSequenceNPC29">
+						<Event maximumExecutionCount="1" name="StartAutopilot" priority="overwrite">
+							<Action name="StartAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="true"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StartCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="0"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+						<Event maximumExecutionCount="1" name="StopAutopilot" priority="overwrite">
+							<Action name="StopAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="false"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StopCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="30"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+					</Maneuver>
+				</ManeuverGroup>
+				<ManeuverGroup maximumExecutionCount="1" name="AutopilotSequenceNPC30">
+					<Actors selectTriggeringEntities="false">
+						<EntityRef entityRef="npc30"/>
+					</Actors>
+					<Maneuver name="AutopilotSequenceNPC30">
+						<Event maximumExecutionCount="1" name="StartAutopilot" priority="overwrite">
+							<Action name="StartAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="true"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StartCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="0"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+						<Event maximumExecutionCount="1" name="StopAutopilot" priority="overwrite">
+							<Action name="StopAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="false"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StopCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="30"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+					</Maneuver>
+				</ManeuverGroup>
+				<ManeuverGroup maximumExecutionCount="1" name="AutopilotSequenceNPC31">
+					<Actors selectTriggeringEntities="false">
+						<EntityRef entityRef="npc31"/>
+					</Actors>
+					<Maneuver name="AutopilotSequenceNPC31">
+						<Event maximumExecutionCount="1" name="StartAutopilot" priority="overwrite">
+							<Action name="StartAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="true"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StartCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="0"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+						<Event maximumExecutionCount="1" name="StopAutopilot" priority="overwrite">
+							<Action name="StopAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="false"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StopCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="30"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+					</Maneuver>
+				</ManeuverGroup>
+				<ManeuverGroup maximumExecutionCount="1" name="AutopilotSequenceNPC32">
+					<Actors selectTriggeringEntities="false">
+						<EntityRef entityRef="npc32"/>
+					</Actors>
+					<Maneuver name="AutopilotSequenceNPC32">
+						<Event maximumExecutionCount="1" name="StartAutopilot" priority="overwrite">
+							<Action name="StartAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="true"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StartCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="0"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+						<Event maximumExecutionCount="1" name="StopAutopilot" priority="overwrite">
+							<Action name="StopAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="false"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StopCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="30"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+					</Maneuver>
+				</ManeuverGroup>
+				<ManeuverGroup maximumExecutionCount="1" name="AutopilotSequenceNPC33">
+					<Actors selectTriggeringEntities="false">
+						<EntityRef entityRef="npc33"/>
+					</Actors>
+					<Maneuver name="AutopilotSequenceNPC33">
+						<Event maximumExecutionCount="1" name="StartAutopilot" priority="overwrite">
+							<Action name="StartAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="true"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StartCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="0"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+						<Event maximumExecutionCount="1" name="StopAutopilot" priority="overwrite">
+							<Action name="StopAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="false"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StopCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="30"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+					</Maneuver>
+				</ManeuverGroup>
+				<ManeuverGroup maximumExecutionCount="1" name="AutopilotSequenceNPC34">
+					<Actors selectTriggeringEntities="false">
+						<EntityRef entityRef="npc34"/>
+					</Actors>
+					<Maneuver name="AutopilotSequenceNPC34">
+						<Event maximumExecutionCount="1" name="StartAutopilot" priority="overwrite">
+							<Action name="StartAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="true"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StartCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="0"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+						<Event maximumExecutionCount="1" name="StopAutopilot" priority="overwrite">
+							<Action name="StopAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="false"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StopCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="30"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+					</Maneuver>
+				</ManeuverGroup>
+				<ManeuverGroup maximumExecutionCount="1" name="AutopilotSequenceNPC35">
+					<Actors selectTriggeringEntities="false">
+						<EntityRef entityRef="npc35"/>
+					</Actors>
+					<Maneuver name="AutopilotSequenceNPC35">
+						<Event maximumExecutionCount="1" name="StartAutopilot" priority="overwrite">
+							<Action name="StartAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="true"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StartCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="0"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+						<Event maximumExecutionCount="1" name="StopAutopilot" priority="overwrite">
+							<Action name="StopAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="false"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StopCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="30"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+					</Maneuver>
+				</ManeuverGroup>
+				<ManeuverGroup maximumExecutionCount="1" name="AutopilotSequenceNPC36">
+					<Actors selectTriggeringEntities="false">
+						<EntityRef entityRef="npc36"/>
+					</Actors>
+					<Maneuver name="AutopilotSequenceNPC36">
+						<Event maximumExecutionCount="1" name="StartAutopilot" priority="overwrite">
+							<Action name="StartAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="true"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StartCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="0"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+						<Event maximumExecutionCount="1" name="StopAutopilot" priority="overwrite">
+							<Action name="StopAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="false"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StopCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="30"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+					</Maneuver>
+				</ManeuverGroup>
+				<ManeuverGroup maximumExecutionCount="1" name="AutopilotSequenceNPC37">
+					<Actors selectTriggeringEntities="false">
+						<EntityRef entityRef="npc37"/>
+					</Actors>
+					<Maneuver name="AutopilotSequenceNPC37">
+						<Event maximumExecutionCount="1" name="StartAutopilot" priority="overwrite">
+							<Action name="StartAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="true"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StartCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="0"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+						<Event maximumExecutionCount="1" name="StopAutopilot" priority="overwrite">
+							<Action name="StopAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="false"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StopCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="30"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+					</Maneuver>
+				</ManeuverGroup>
+				<ManeuverGroup maximumExecutionCount="1" name="AutopilotSequenceNPC38">
+					<Actors selectTriggeringEntities="false">
+						<EntityRef entityRef="npc38"/>
+					</Actors>
+					<Maneuver name="AutopilotSequenceNPC38">
+						<Event maximumExecutionCount="1" name="StartAutopilot" priority="overwrite">
+							<Action name="StartAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="true"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StartCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="0"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+						<Event maximumExecutionCount="1" name="StopAutopilot" priority="overwrite">
+							<Action name="StopAutopilot">
+								<PrivateAction>
+									<ActivateControllerAction lateral="false" longitudinal="false"/>
+								</PrivateAction>
+							</Action>
+							<StartTrigger>
+								<ConditionGroup>
+									<Condition conditionEdge="rising" delay="1" name="StopCondition">
+										<ByValueCondition>
+											<SimulationTimeCondition rule="greaterThan" value="30"/>
+										</ByValueCondition>
+									</Condition>
+								</ConditionGroup>
+							</StartTrigger>
+						</Event>
+					</Maneuver>
+				</ManeuverGroup>
+				<ManeuverGroup maximumExecutionCount="1" name="AutopilotSequenceNPC39">
+					<Actors selectTriggeringEntities="false">
+						<EntityRef entityRef="npc39"/>
+					</Actors>
+					<Maneuver name="AutopilotSequenceNPC39">
 						<Event maximumExecutionCount="1" name="StartAutopilot" priority="overwrite">
 							<Action name="StartAutopilot">
 								<PrivateAction>
