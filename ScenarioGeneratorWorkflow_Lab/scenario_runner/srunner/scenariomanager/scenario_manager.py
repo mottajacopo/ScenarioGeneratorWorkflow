@@ -143,7 +143,7 @@ class ScenarioManager(object):
                     if traffic_light.get_state() == carla.TrafficLightState.Red or traffic_light.get_state() == carla.TrafficLightState.Yellow:
                         #world.hud.notification("Traffic light changed! Good to go!")
                         traffic_light.set_state(carla.TrafficLightState.Green)
-                        print("changed traffic ligth to green")
+                        #print("changed traffic ligth to green")
 
 #####################################################################################################
 

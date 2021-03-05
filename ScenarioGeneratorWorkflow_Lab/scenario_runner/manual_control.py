@@ -201,6 +201,11 @@ def main():
         metavar='WIDTHxHEIGHT',
         default='1280x720',
         help='window resolution (default: 1280x720)')
+    argparser.add_argument(   ################################################################################################################################################################
+        '-s', '--scenario',
+        metavar='SCEN',
+        default='scenario',
+        help='scenario name (default: "scenario")')
     args = argparser.parse_args()
 
     args.rolename = 'hero'      # Needed for CARLA version
