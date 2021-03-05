@@ -2,13 +2,13 @@
     "Parameters": [
         {
             "Town": [
-                "Town04"
+                "Town03"
             ],
             "randomPosition": [
                 true
             ],
             "repetitions": [
-                40
+                20
             ],
             "npc_number": [
                 20

@@ -90,13 +90,13 @@ class Scenario(ScenarioGenerator):
 
         #egostart = pyoscx.TeleportAction(pyoscx.WorldPosition(-9.4,-152.8,0.5,1.57079632679))
         #egostart = pyoscx.TeleportAction(pyoscx.WorldPosition(-8.6,80,0.5,4.7))
-        #egospeed = pyoscx.AbsoluteSpeedAction(kwargs['approachSpeed'],pyoscx.TransitionDynamics(pyoscx.DynamicsShapes.step,pyoscx.DynamicsDimension.distance,10))
+        #egospeed = pyoscx.AbsoluteSpeedAction(0.1,pyoscx.TransitionDynamics(pyoscx.DynamicsShapes.step,pyoscx.DynamicsDimension.distance,10))
         
         ### create init
         init = pyoscx.Init()
 
         init.add_global_action(envAct)
-        #init.add_init_action(egoname,egospeed)
+        
         init.add_init_action(egoname,egostart)
         init.add_init_action(targetname,targetstart)
 
@@ -156,10 +156,22 @@ class Scenario(ScenarioGenerator):
         mangr = pyoscx.ManeuverGroup('mangroup')
         mangr.add_actor('hero')
         mangr.add_maneuver(man)
-        starttrigger = pyoscx.ValueTrigger('starttrigger',0,pyoscx.ConditionEdge.rising,pyoscx.SimulationTimeCondition(0,pyoscx.Rule.greaterThan))
-        #stoptrigcond = pyoscx.RelativeDistanceCondition(5, pyoscx.Rule.lessThan, pyoscx.RelativeDistanceType.cartesianDistance,targetname,freespace=False)
-        stoptrigger = pyoscx.ValueTrigger('stopttrigger',20,pyoscx.ConditionEdge.rising,pyoscx.SimulationTimeCondition(0,pyoscx.Rule.greaterThan),'stop')
-        act = pyoscx.Act('my_act',starttrigger,stoptrigger)
+
+        act_starttrigger = pyoscx.ValueTrigger('starttrigger',0,pyoscx.ConditionEdge.rising,pyoscx.SimulationTimeCondition(0,pyoscx.Rule.greaterThan))
+
+        act_stopCondGroup = pyoscx.ConditionGroup('stop')
+        #stoptrigcond = pyoscx.RelativeDistanceCondition(15, pyoscx.Rule.lessThan, pyoscx.RelativeDistanceType.cartesianDistance,targetname,freespace=False)
+        stoptrigcond1 = pyoscx.StandStillCondition(5)
+        stoptrigcond2 = pyoscx.TraveledDistanceCondition(15.0)
+        distance_stoptrigger = pyoscx.EntityTrigger('EndCondition',0,pyoscx.ConditionEdge.rising,stoptrigcond1,egoname, triggeringpoint='stop')
+        timeout_stoptrigger = pyoscx.ValueTrigger('StopCondition',0,pyoscx.ConditionEdge.rising,pyoscx.SimulationTimeCondition(25,pyoscx.Rule.greaterThan), triggeringpoint='stop')
+        act_stopCondGroup.add_condition(timeout_stoptrigger)
+        #act_stopCondGroup.add_condition(distance_stoptrigger)
+
+        pyoscx.Trigger()
+
+        act = pyoscx.Act('my_act',act_starttrigger,act_stopCondGroup)
+
 
         act.add_maneuver_group(mangr)
     
@@ -207,6 +219,9 @@ if __name__ == "__main__":
 
     #convert repetirions to list of numbers for correct nember of permutations
     parameters['repetitions'] = list(range(0, parameters["repetitions"][0]))
+
+    town = parameters["Town"][0]
+    util.check_town(town)
 
     s.print_permutations(parameters)
 

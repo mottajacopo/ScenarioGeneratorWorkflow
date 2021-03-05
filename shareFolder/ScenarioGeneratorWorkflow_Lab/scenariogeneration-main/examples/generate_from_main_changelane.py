@@ -196,8 +196,15 @@ class Scenario(ScenarioGenerator):
 
         #act and stopcondition of scenario
         act_starttrigger = pyoscx.ValueTrigger('starttrigger',0,pyoscx.ConditionEdge.rising,pyoscx.SimulationTimeCondition(0,pyoscx.Rule.greaterThan))
-        act_stoptrigger = pyoscx.ValueTrigger('stop_simulation',0,pyoscx.ConditionEdge.rising,pyoscx.SimulationTimeCondition(20,pyoscx.Rule.greaterThan),'stop')
-        act = pyoscx.Act('my_act',act_starttrigger,act_stoptrigger)
+
+        act_stopCondGroup = pyoscx.ConditionGroup('stop')
+        stoptrigcond = pyoscx.RelativeDistanceCondition(0, pyoscx.Rule.lessThan, pyoscx.RelativeDistanceType.cartesianDistance,targetname,freespace=False)
+        distance_stoptrigger = pyoscx.EntityTrigger('EndCondition',0,pyoscx.ConditionEdge.rising,stoptrigcond,egoname, triggeringpoint='stop')
+        timeout_stoptrigger = pyoscx.ValueTrigger('StopCondition',0,pyoscx.ConditionEdge.rising,pyoscx.SimulationTimeCondition(25,pyoscx.Rule.greaterThan), triggeringpoint='stop')
+        act_stopCondGroup.add_condition(timeout_stoptrigger)
+        #act_stopCondGroup.add_condition(distance_stoptrigger)
+
+        act = pyoscx.Act('my_act',act_starttrigger,act_stopCondGroup)
 
         act.add_maneuver_group(h_mangr)
         act.add_maneuver_group(a_mangr)
@@ -248,6 +255,9 @@ if __name__ == "__main__":
 
     #convert repetirions to list of numbers for correct nember of permutations
     parameters['repetitions'] = list(range(0, parameters["repetitions"][0]))
+
+    town = parameters["Town"][0]
+    util.check_town(town)
 
     s.print_permutations(parameters)
 

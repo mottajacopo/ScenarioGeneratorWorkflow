@@ -3,7 +3,7 @@ import random
 import carla
 import pyoscx
 import math
-
+import time
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import ndimage
@@ -14,10 +14,20 @@ client.set_timeout(5.0)
 world = client.get_world()
 iteration = -1
 
+def check_town(town):
+    current_map = world.get_map()
+
+    if(current_map.name != town):
+        client.load_world(town)
+        print("The CARLA server uses the wrong map:")
+        print("Loading correct map: ...wait")
+        time.sleep(4)
+
 
 def get_random_spawn_points(offset, check_lane):   #get spawn points for ego, adversary and npcs
 
     current_map = world.get_map()
+
     # spawn_transforms will be a list of carla.Transform
     spawn_transforms = current_map.get_spawn_points()
 

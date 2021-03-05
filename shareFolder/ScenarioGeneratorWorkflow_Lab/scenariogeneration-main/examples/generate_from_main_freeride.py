@@ -27,7 +27,7 @@ class Scenario(ScenarioGenerator):
         #get random position for ego, target and npcs
         if(kwargs['randomPosition']):
             egostart, targetstart, npc_spawns = util.get_random_spawn_points( 150,kwargs['check_lane'])
-        else:
+        else: 
             #put a default position here
             print("default position not setted")
             exit
@@ -124,10 +124,15 @@ class Scenario(ScenarioGenerator):
 
         
         act_starttrigger = pyoscx.ValueTrigger('starttrigger',0,pyoscx.ConditionEdge.rising,pyoscx.SimulationTimeCondition(0,pyoscx.Rule.greaterThan))
-        #stoptrigcond = pyoscx.TraveledDistanceCondition(200.0)
-        #act_stoptrigger = pyoscx.EntityTrigger('EndCondition',0,pyoscx.ConditionEdge.rising,stoptrigcond,egoname, triggeringpoint='stop')
-        act_stoptrigger = pyoscx.ValueTrigger('StopCondition',0,pyoscx.ConditionEdge.rising,pyoscx.SimulationTimeCondition(25,pyoscx.Rule.greaterThan), triggeringpoint='stop')
-        act = pyoscx.Act('my_act',act_starttrigger,act_stoptrigger)
+
+        act_stopCondGroup = pyoscx.ConditionGroup('stop')
+        stoptrigcond = pyoscx.TraveledDistanceCondition(150.0)
+        distance_stoptrigger = pyoscx.EntityTrigger('EndCondition',0,pyoscx.ConditionEdge.rising,stoptrigcond,egoname, triggeringpoint='stop')
+        timeout_stoptrigger = pyoscx.ValueTrigger('StopCondition',0,pyoscx.ConditionEdge.rising,pyoscx.SimulationTimeCondition(25,pyoscx.Rule.greaterThan), triggeringpoint='stop')
+        act_stopCondGroup.add_condition(timeout_stoptrigger)
+        #act_stopCondGroup.add_condition(distance_stoptrigger)
+
+        act = pyoscx.Act('my_act',act_starttrigger,act_stopCondGroup)
 
         act.add_maneuver_group(h_mangr)
 
@@ -178,8 +183,11 @@ if __name__ == "__main__":
     #convert repetirions to list of numbers for correct nember of permutations
     parameters['repetitions'] = list(range(0, parameters["repetitions"][0]))
 
+    town = parameters["Town"][0]
+    util.check_town(town)
+
     s.print_permutations(parameters)
-    
+
     s.generate('FreeRide',parameters)
 
     print("Process finished --- %s seconds ---" % (time.time() - start_time))
