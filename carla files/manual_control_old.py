@@ -139,7 +139,7 @@ try:
 except ImportError:
     raise RuntimeError('cannot import numpy, make sure numpy package is installed')
 
-#############################################################################################################################################################################################################
+
 #export mp4 video
 from cv2 import VideoWriter, VideoWriter_fourcc, imread, resize
 firstPass=True
@@ -172,7 +172,6 @@ class World(object):
     def __init__(self, carla_world, hud, args):
         self.world = carla_world
         self.actor_role_name = args.rolename
-        self.scenario_name = args.scenario ##########################################################################################################################################################################
         try:
             self.map = self.world.get_map()
         except RuntimeError as error:
@@ -351,7 +350,6 @@ class KeyboardControl(object):
         world.hud.notification("Press 'H' or '?' for help.", seconds=4.0)
 
     def parse_events(self, client, world, clock):
-
         world.recording_enabled = True
         if isinstance(self._control, carla.VehicleControl):
             current_lights = self._lights
@@ -504,17 +502,6 @@ class KeyboardControl(object):
             elif isinstance(self._control, carla.WalkerControl):
                 self._parse_walker_keys(pygame.key.get_pressed(), clock.get_time(), world)
             world.player.apply_control(self._control)
-
-        ###########################################################################################################################################################################################
-        #start recording when ego start moving
-        throttle = world.player.get_control().throttle
-
-        if(throttle > 0.0):
-            world.camera_manager.start_recording()
-            world.camera_manager.set_scenario_name(world.scenario_name)
-
-        #############################################################################################################################################################################################
-
 
     def _parse_vehicle_keys(self, keys, milliseconds):
         if keys[K_UP] or keys[K_w]:
@@ -972,7 +959,7 @@ class CameraManager(object):
         self.surface = None
         self._parent = parent_actor
         self.hud = hud
-        self.recording = False
+        self.recording = True
         bound_y = 0.5 + self._parent.bounding_box.extent.y
         Attachment = carla.AttachmentType
         self._camera_transforms = [
@@ -1051,13 +1038,6 @@ class CameraManager(object):
         self.recording = not self.recording
         self.hud.notification('Recording %s' % ('On' if self.recording else 'Off'))
 
-    def start_recording(self): ###############################################################################################################################################################################
-        self.recording = True
-        self.hud.notification('Recording started')
-
-    def set_scenario_name(self, scenario_name):  ###############################################################################################################################################################
-        self.scenario_name = scenario_name
-
     def render(self, display):
         if self.surface is not None:
             display.blit(self.surface, (0, 0))
@@ -1096,23 +1076,19 @@ class CameraManager(object):
             array = array[:, :, :3]
             array = array[:, :, ::-1]
             self.surface = pygame.surfarray.make_surface(array.swapaxes(0, 1))
-
-
-####################################################################################################################################################################################################################
         if (self.recording):
             #image.save_to_disk('_out/%08d' % image.frame)   
 
-            self.scenario_name
-            videoName = self.scenario_name
+            videoName='FreeRide-1901-'
             scenarioName=videoName
             global savePath
 
             if (firstPass):
-                currentTime = datetime.datetime.now()
+                currentTime = datetime.datetime.now().time()
                 videoName=videoName+str(currentTime)
                 videoName=videoName[:-7]
                 videoName=videoName.replace(':', '-', 3)
-                savePath=savePath 
+                savePath=savePath + videoName+'/'
                    
             if not os.path.exists(savePath):
                 os.makedirs(savePath)
@@ -1120,9 +1096,9 @@ class CameraManager(object):
             imageName ='%08d' % image.frame 
             
             #save_image(self.surface, savePath, imageName)
-            save_video(self.surface, savePath, videoName)
+            save_video(self.surface, savePath, scenarioName)
 
-####################################################################################################################################################################################################################
+
 # ==============================================================================
 # -- save jpg ---------------------------------------------------------------
 # ==============================================================================
@@ -1156,7 +1132,7 @@ def save_video(image, savePath, videoName):
     img_bgr = cv2.cvtColor(view, cv2.COLOR_RGB2BGR)  # convert from rgb to bgr
 
     out.write(img_bgr)
-#######################################################################################################################################################################################################
+
 
 
 # ==============================================================================
@@ -1252,11 +1228,6 @@ def main():
         default=2.2,
         type=float,
         help='Gamma correction of the camera (default: 2.2)')
-    argparser.add_argument(   ################################################################################################################################################################
-        '-s', '--scenario',
-        metavar='SCEN',
-        default='scenario',
-        help='scenario name (default: "scenario")')
     args = argparser.parse_args()
 
     args.width, args.height = [int(x) for x in args.res.split('x')]
