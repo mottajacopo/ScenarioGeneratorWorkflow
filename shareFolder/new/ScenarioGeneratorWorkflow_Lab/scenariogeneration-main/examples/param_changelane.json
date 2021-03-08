@@ -1,0 +1,25 @@
+{
+    "Parameters": [
+        {
+            "Town": [
+                "Town06"
+            ],
+            "approachSpeed": [
+                10, 15
+            ],
+            "randomPosition": [
+                true
+            ],
+            "initialOffset": [
+                50, 70
+            ],
+            "repetitions": [
+                50
+            ],
+            "npc_number": [
+                20
+            ],
+            "check_lane": ["left"]
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+{
+    "Parameters": [
+        {
+            "Town": [
+                "Town04"
+            ],
+            "randomPosition": [
+                true
+            ],
+            "initialOffset": [
+                10,
+                15,
+                20
+            ],
+            "repetitions": [
+                35
+            ],
+            "npc_number": [
+                40
+            ],
+            "check_lane": ["central"]
+        }
+    ]
+}
+
