@@ -7,11 +7,17 @@
             "randomPosition": [
                 true
             ],
+            "isRaining": [
+                false
+            ],
+            "hourOfDay": [
+                12
+            ],
             "repetitions": [
-                100
+                20
             ],
             "npc_number": [
-                40
+                20
             ],
             "check_lane": ["central"]
         }

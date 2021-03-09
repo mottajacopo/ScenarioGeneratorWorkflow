@@ -2,10 +2,16 @@
     "Parameters": [
         {
             "Town": [
-                "Town06"
+                "Town04"
             ],
             "approachSpeed": [
                 10, 15
+            ],
+            "isRaining": [
+                false
+            ],
+            "hourOfDay": [
+                12
             ],
             "randomPosition": [
                 true
@@ -14,7 +20,7 @@
                 50, 70
             ],
             "repetitions": [
-                50
+                10
             ],
             "npc_number": [
                 20

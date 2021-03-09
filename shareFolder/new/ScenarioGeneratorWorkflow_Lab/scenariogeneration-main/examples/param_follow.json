@@ -7,16 +7,22 @@
             "randomPosition": [
                 true
             ],
+            "isRaining": [
+                false
+            ],
+            "hourOfDay": [
+                12
+            ],
             "initialOffset": [
                 10,
                 15,
                 20
             ],
             "repetitions": [
-                35
+                10
             ],
             "npc_number": [
-                40
+                20
             ],
             "check_lane": ["central"]
         }

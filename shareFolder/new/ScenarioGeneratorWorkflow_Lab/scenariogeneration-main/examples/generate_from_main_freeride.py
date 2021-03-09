@@ -70,9 +70,12 @@ class Scenario(ScenarioGenerator):
         
 
         #environment
-        timeofday=pyoscx.TimeOfDay(True,2020,12,11,11,52,10)
+        timeofday=pyoscx.TimeOfDay(True,2020,12,11,kwargs['hourOfDay'],52,10)
         roadcond=pyoscx.RoadCondition(1.0)
-        weather=pyoscx.Weather(pyoscx.CloudState.free,1,0,1,pyoscx.PrecipitationType.dry,0,100000)
+        if(kwargs['isRaining']):
+            weather=pyoscx.Weather(pyoscx.CloudState.rainy,0.2,0,1,pyoscx.PrecipitationType.rain,10,100000)
+        else:
+            weather=pyoscx.Weather(pyoscx.CloudState.free,1,0,1,pyoscx.PrecipitationType.dry,1,100000)
         env=pyoscx.Environment("Environment1",timeofday,weather,roadcond)
         envAct= pyoscx.EnvironmentAction("Environment1", env)
 

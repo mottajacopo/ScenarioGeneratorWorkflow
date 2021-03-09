@@ -7,6 +7,12 @@
             "approachSpeed": [
                 8
             ],
+            "isRaining": [
+                false
+            ],
+            "hourOfDay": [
+                23
+            ],
             "randomPosition": [
                 true
             ],
