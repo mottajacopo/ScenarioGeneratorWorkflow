@@ -73,7 +73,7 @@ class Scenario(ScenarioGenerator):
         timeofday=pyoscx.TimeOfDay(True,2020,12,11,kwargs['hourOfDay'],52,10)
         roadcond=pyoscx.RoadCondition(1.0)
         if(kwargs['isRaining']):
-            weather=pyoscx.Weather(pyoscx.CloudState.rainy,0.2,0,1,pyoscx.PrecipitationType.rain,10,100000)
+            weather=pyoscx.Weather(pyoscx.CloudState.overcast,1,0,1,pyoscx.PrecipitationType.rain,100,70)
         else:
             weather=pyoscx.Weather(pyoscx.CloudState.free,1,0,1,pyoscx.PrecipitationType.dry,1,100000)
         env=pyoscx.Environment("Environment1",timeofday,weather,roadcond)
@@ -131,7 +131,7 @@ class Scenario(ScenarioGenerator):
         act_stopCondGroup = pyoscx.ConditionGroup('stop')
         stoptrigcond = pyoscx.TraveledDistanceCondition(150.0)
         distance_stoptrigger = pyoscx.EntityTrigger('EndCondition',0,pyoscx.ConditionEdge.rising,stoptrigcond,egoname, triggeringpoint='stop')
-        timeout_stoptrigger = pyoscx.ValueTrigger('StopCondition',0,pyoscx.ConditionEdge.rising,pyoscx.SimulationTimeCondition(25,pyoscx.Rule.greaterThan), triggeringpoint='stop')
+        timeout_stoptrigger = pyoscx.ValueTrigger('StopCondition',0,pyoscx.ConditionEdge.rising,pyoscx.SimulationTimeCondition(15,pyoscx.Rule.greaterThan), triggeringpoint='stop')
         act_stopCondGroup.add_condition(timeout_stoptrigger)
         #act_stopCondGroup.add_condition(distance_stoptrigger)
 

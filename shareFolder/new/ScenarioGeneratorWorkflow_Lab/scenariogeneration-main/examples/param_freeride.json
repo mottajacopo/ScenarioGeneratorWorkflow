@@ -11,13 +11,13 @@
                 false
             ],
             "hourOfDay": [
-                12
+                19
             ],
             "repetitions": [
-                20
+                60
             ],
             "npc_number": [
-                20
+                0
             ],
             "check_lane": ["central"]
         }

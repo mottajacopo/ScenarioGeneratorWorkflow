@@ -8,7 +8,7 @@
                10
             ],
             "isRaining": [
-                false
+                true
             ],
             "hourOfDay": [
                 12
@@ -20,7 +20,7 @@
                 80, 50
             ],
             "repetitions": [
-                15
+                30
             ],
             "npc_number": [
                 20
