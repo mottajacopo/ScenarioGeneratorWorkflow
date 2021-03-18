@@ -21,8 +21,45 @@ def check_town(town):
         client.load_world(town)
         print("The CARLA server uses the wrong map:")
         print("Loading correct map: ...wait")
-        time.sleep(4)
+        time.sleep(5)
 
+
+def shift_lane(pos, direction):
+    current_map = world.get_map()
+
+    new_pos = pos
+    carla_loc = carla.Location(new_pos.position.x, (-1)*new_pos.position.y, new_pos.position.z)
+    waypoint = current_map.get_waypoint(carla_loc)
+
+    if (direction == 'right'):
+        lane_change = waypoint.get_right_lane()
+        new_c = lane_change.transform.location
+
+    elif(direction == 'left'):
+        lane_change = waypoint.get_left_lane()
+        new_c = lane_change.transform.location
+
+    new_pos.position.x = new_c.x
+    new_pos.position.y = new_c.y *(-1)
+    new_pos.position.z = new_c.z
+
+    return new_pos
+
+"""
+def shift_lane2(pos, direction):
+
+
+    if (direction == 'right'):
+        lane_change = pos.get_right_lane().transform
+    elif(direction == 'left'):
+        lane_change = pos.get_left_lane().transform
+    else:
+        lane_change = pos
+
+    shift_loc = carla.Transform(carla.Location(lane_change.location.x, lane_change.location.y, lane_change.location.z),carla.Rotation(yaw = lane_change.rotation.yaw))
+
+    return shift_loc        
+"""
 
 def get_random_spawn_points(offset, check_lane):   #get spawn points for ego, adversary and npcs
 
@@ -41,13 +78,14 @@ def get_random_spawn_points(offset, check_lane):   #get spawn points for ego, ad
 
     #check_intersection = waypoint.is_intersection or waypoint.is_junction
 
+
     #if scenario requested do a lane check to see if left lane is free
     if(check_lane == "left"):
-        while (not(waypoint.lane_change == carla.libcarla.LaneChange.Both or waypoint.lane_change == carla.libcarla.LaneChange.Left)):
+        while (not(waypoint.lane_change != carla.libcarla.LaneChange.Right and waypoint.get_left_lane() != None)):
             random_spawn = random.choice(spawn_transforms)
             waypoint = current_map.get_waypoint(random_spawn.location)  
     elif(check_lane == "right"):
-        while (not(waypoint.lane_change == carla.libcarla.LaneChange.Both or waypoint.lane_change == carla.libcarla.LaneChange.Right)):
+        while (not(waypoint.lane_change != carla.libcarla.LaneChange.Left and waypoint.get_right_lane() != None)):
             random_spawn = random.choice(spawn_transforms)
             waypoint = current_map.get_waypoint(random_spawn.location)   
     elif(check_lane == "both"):
@@ -56,20 +94,28 @@ def get_random_spawn_points(offset, check_lane):   #get spawn points for ego, ad
             waypoint = current_map.get_waypoint(random_spawn.location)  
 
 
-    ego_spawn = random_spawn
-    ego_waypoint = current_map.get_waypoint(ego_spawn.location)            
+    back_spawn = random_spawn
+    back_waypoint = current_map.get_waypoint(back_spawn.location)   
+    
                     
     #compute adversary spawn point 
-    target_spawn_offset = get_offset_waypoint(ego_waypoint, offset)
-
-    #convert carla location to pyxosc location
-    egostart = carla2pyxosc(ego_spawn)
-    targetstart = carla2pyxosc(target_spawn_offset.transform)
-
-    npc_spawns, npc_lane = get_random_npc_spawn(current_map, ego_spawn, 150, offset, check_lane)
+    front_spawn_offset = get_offset_waypoint(back_waypoint, offset)
 
     """
+    if(False):
+        back_spawn = shift_lane(back_waypoint, check_lane)  ###################cutin
+    """
 
+    #convert carla location to pyxosc location
+    back_start = carla2pyxosc(back_spawn)
+    front_start = carla2pyxosc(front_spawn_offset.transform)
+
+
+
+    npc_spawns, npc_lane = get_random_npc_spawn(current_map, back_spawn, 150, offset, check_lane)
+
+    
+    """
     im = plt.imread(str(current_map.name) + ".jpg")
     im2 = ndimage.rotate(im, 180)
     im2 = np.flipud(im)
@@ -77,8 +123,8 @@ def get_random_spawn_points(offset, check_lane):   #get spawn points for ego, ad
     #plt.imshow(im2, extent=[-10, 403, 10, -338])  #Town01
     #plt.imshow(im2, extent=[-14, 200, -100, -314])  #Town02
     #plt.imshow(im2, extent=[260, -160, 220, -220])  #Town03
-    #plt.imshow(im2, extent=[420, -522, 403, -450])  #Town04
-    plt.imshow(im2, extent=[-282, 220, 220, -219])  #Town05
+    plt.imshow(im2, extent=[420, -522, 403, -450])  #Town04
+    #plt.imshow(im2, extent=[-282, 220, 220, -219])  #Town05
     #plt.imshow(im2, extent=[-378, 675, 160, -410])  #Town06
 
     global iteration 
@@ -100,14 +146,14 @@ def get_random_spawn_points(offset, check_lane):   #get spawn points for ego, ad
     plt.scatter(egostart.position.x, egostart.position.y ,s = 3, c='b')
     plt.scatter(targetstart.position.x, targetstart.position.y ,s = 3, c='c')
 
-    #plt.show(block=False)
+    plt.show(block=False)
     #plt.pause(1)
-    plt.savefig('testplot' + str(iteration) +'.jpg', dpi=300)
-    plt.close()
-    
+    #plt.savefig('testplot' + str(iteration) +'.jpg', dpi=300)
+    #plt.close()
     """
+    
 
-    return egostart, targetstart, npc_spawns 
+    return back_start, front_start, npc_spawns 
 
 def get_random_vehicles():   #get random vehicle name
 

@@ -24,11 +24,13 @@ class Scenario(ScenarioGenerator):
 
         #get random position for ego, target and npcs
         if(kwargs['randomPosition']):
-            egostart, targetstart, npc_spawns = util.get_random_spawn_points( 0,kwargs['check_lane'])
+            targetstart, egostart, npc_spawns = util.get_random_spawn_points( kwargs['initialOffset'],kwargs['check_lane'])   #inverto posizioni di ego rispetto a adversary per il cutin
         else:
             #put a default position here
             print("default position not setted")
             exit
+
+        targetstart = util.shift_lane(targetstart, kwargs['check_lane'])  ###################cutin
         
         ### create catalogs
         catalog = pyoscx.Catalog()
@@ -87,12 +89,13 @@ class Scenario(ScenarioGenerator):
         envAct= pyoscx.EnvironmentAction("Environment1", env)
 
 
-        targetstart = pyoscx.TeleportAction(pyoscx.WorldPosition(-8.6,-80,0.5,4.7))
+        #targetstart = pyoscx.TeleportAction(pyoscx.WorldPosition(-8.6,-80,0.5,4.7))
         #step_time = pyoscx.TransitionDynamics(pyoscx.DynamicsShapes.step,pyoscx.DynamicsDimension.time,1)
         #targetspeed = pyoscx.AbsoluteSpeedAction(15,step_time)
 
         #egostart = pyoscx.TeleportAction(pyoscx.WorldPosition(-2.6,80,0.5,4.7))
-        egospeed = pyoscx.AbsoluteSpeedAction(kwargs['approachSpeed'],pyoscx.TransitionDynamics(pyoscx.DynamicsShapes.step,pyoscx.DynamicsDimension.distance,10))
+        egospeed = pyoscx.AbsoluteSpeedAction(kwargs['approachSpeed']/2,pyoscx.TransitionDynamics(pyoscx.DynamicsShapes.step,pyoscx.DynamicsDimension.distance,10))
+        targetspeed = pyoscx.AbsoluteSpeedAction(kwargs['approachSpeed'],pyoscx.TransitionDynamics(pyoscx.DynamicsShapes.step,pyoscx.DynamicsDimension.distance,10))
 
 
         ### create init
@@ -101,7 +104,7 @@ class Scenario(ScenarioGenerator):
         init.add_global_action(envAct)
         init.add_init_action(egoname,egospeed)
         init.add_init_action(egoname,egostart)
-        #init.add_init_action(targetname,targetspeed)
+        init.add_init_action(targetname,targetspeed)
         init.add_init_action(targetname,targetstart)
 
         #init npcs start positions
@@ -131,15 +134,22 @@ class Scenario(ScenarioGenerator):
 
 
         #adv cut lane
-        trigcond = pyoscx.RelativeDistanceCondition(8,pyoscx.Rule.lessThan, pyoscx.RelativeDistanceType.cartesianDistance,egoname,freespace=False)
+        trigcond = pyoscx.RelativeDistanceCondition(4,pyoscx.Rule.lessThan, pyoscx.RelativeDistanceType.cartesianDistance,egoname,freespace=False)
         trigger = pyoscx.EntityTrigger('distancetrigger',0.0,pyoscx.ConditionEdge.none,trigcond,targetname)
 
         event = pyoscx.Event('AdvChangesLane',pyoscx.Priority.overwrite)
         event.add_trigger(trigger)
         sin_time = pyoscx.TransitionDynamics(pyoscx.DynamicsShapes.linear,pyoscx.DynamicsDimension.distance,25)
-        action = pyoscx.RelativeLaneChangeAction(1,targetname,sin_time)
-        event.add_action('AdvChangesLane',action)
 
+        if(kwargs['check_lane'] == 'left'):
+            lane_offset = 1
+        elif(kwargs['check_lane'] == 'right'):
+            lane_offset = -1
+        else:
+            lane_offset = 1
+
+        action = pyoscx.RelativeLaneChangeAction(lane_offset ,targetname,sin_time)
+        event.add_action('AdvChangesLane',action)
 
         ## create the maneuver 
         man = pyoscx.Maneuver('my_maneuver')
@@ -149,7 +159,7 @@ class Scenario(ScenarioGenerator):
         mangr.add_actor('adversary')
         mangr.add_maneuver(man)
         starttrigger = pyoscx.ValueTrigger('starttrigger',0,pyoscx.ConditionEdge.rising,pyoscx.SimulationTimeCondition(0,pyoscx.Rule.greaterThan))
-        stoptrigger = pyoscx.ValueTrigger('stop_simulation',0,pyoscx.ConditionEdge.rising,pyoscx.SimulationTimeCondition(20,pyoscx.Rule.greaterThan),'stop')
+        stoptrigger = pyoscx.ValueTrigger('stop_simulation',0,pyoscx.ConditionEdge.rising,pyoscx.SimulationTimeCondition(10,pyoscx.Rule.greaterThan),'stop')
         act = pyoscx.Act('my_act',starttrigger,stoptrigger)
 
         act.add_maneuver_group(mangr)
@@ -198,6 +208,9 @@ if __name__ == "__main__":
 
     #convert repetirions to list of numbers for correct nember of permutations
     parameters['repetitions'] = list(range(0, parameters["repetitions"][0]))
+
+    town = parameters["Town"][0]
+    util.check_town(town)
 
     s.print_permutations(parameters)
 
